@@ -73,14 +73,6 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                         ))}
                     </div>
 
-                    <div className="modal-actions">
-                        {project.github && (
-                            <a href={project.github} target="_blank" rel="noopener" className="btn btn-primary">
-                                <GithubIcon /> View on GitHub
-                            </a>
-                        )}
-                    </div>
-
                     {/* Demo Media */}
                     {project.demo && (
                         <div className="modal-demo">
@@ -91,6 +83,14 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                             )}
                         </div>
                     )}
+
+                    <div className="modal-actions">
+                        {project.github && (
+                            <a href={project.github} target="_blank" rel="noopener" className="btn btn-primary">
+                                <GithubIcon /> View on GitHub
+                            </a>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
