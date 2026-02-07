@@ -1,0 +1,26 @@
+import { useEffect, useState } from 'react'
+
+export default function ScrollProgress() {
+    const [progress, setProgress] = useState(0)
+
+    useEffect(() => {
+        const updateProgress = () => {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight
+            if (scrollHeight > 0) {
+                const scrolled = (window.scrollY / scrollHeight) * 100
+                setProgress(scrolled)
+            }
+        }
+
+        window.addEventListener('scroll', updateProgress, { passive: true })
+        return () => window.removeEventListener('scroll', updateProgress)
+    }, [])
+
+    return (
+        <div
+            className="scroll-progress"
+            style={{ width: `${progress}%` }}
+            aria-hidden="true"
+        />
+    )
+}

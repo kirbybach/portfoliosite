@@ -1,0 +1,5 @@
+/plans
+/plans/*
+/node_modules
+
+.env
