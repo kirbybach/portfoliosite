@@ -1173,6 +1173,13 @@ button {
     overflow: hidden;
 }
 
+/* TypeWriter styles */
+.typewriter {
+    display: inline-block;
+    min-width: 23ch;
+    /* Prevents layout shift from dynamic text */
+}
+
 /* TypeWriter cursor */
 .typewriter-cursor {
     display: inline-block;
