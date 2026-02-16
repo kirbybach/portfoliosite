@@ -1006,6 +1006,10 @@ button {
         --section-padding: 4rem 0;
     }
 
+    .scroll-indicator {
+        display: none;
+    }
+
     .nav-links {
         display: none;
         position: absolute;
