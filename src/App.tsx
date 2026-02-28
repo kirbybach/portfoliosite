@@ -1,25 +1,20 @@
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import Projects from './components/Projects'
-import Experience from './components/Experience'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
-import ScrollProgress from './components/ScrollProgress'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import MorePage from './pages/MorePage'
+import ReadingPage from './pages/ReadingPage'
+import ProjectsPage from './pages/ProjectsPage'
 import './styles/main.css'
 
 function App() {
   return (
-    <>
-      <ScrollProgress />
-      <Navbar />
-      <Hero />
-      <About />
-      <Projects />
-      <Experience />
-      <Contact />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/more" element={<MorePage />} />
+        <Route path="/reading" element={<ReadingPage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

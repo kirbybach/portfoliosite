@@ -1,5 +1,15 @@
 const experiences = [
     {
+        date: 'Jan 2026 – Present',
+        title: 'President',
+        company: 'CS For Good Club • Notre Dame',
+        details: [
+            'Lead student organization developing software solutions for local non-profits',
+            'Oversee multiple technical projects bridging clients with student teams',
+            'Manage communications with community partners for successful deployments',
+        ],
+    },
+    {
         date: 'May 2025 – Present',
         title: 'Software Intern',
         company: 'Rover House Cleaners • Dallas, TX',
@@ -19,16 +29,6 @@ const experiences = [
             "Developed custom JavaScript ordering system for Sean's Table (Chicago personal chef)",
             'Created website for Legionarios Con Jose Luis Estela (Fox Deportes, 1M+ viewers)',
             'Increased user engagement by 30% and reduced ordering clicks by 20%',
-        ],
-    },
-    {
-        date: 'Jan 2026 – Present',
-        title: 'President',
-        company: 'CS For Good Club • Notre Dame',
-        details: [
-            'Lead student organization developing software solutions for local non-profits',
-            'Oversee multiple technical projects bridging clients with student teams',
-            'Manage communications with community partners for successful deployments',
         ],
     },
 ]

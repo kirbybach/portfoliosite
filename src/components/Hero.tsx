@@ -9,11 +9,7 @@ export default function Hero() {
 
     return (
         <section id="hero" className="hero">
-            <div className="hero-bg">
-                <div className="gradient-orb orb-1"></div>
-                <div className="gradient-orb orb-2"></div>
-                <div className="gradient-orb orb-3"></div>
-            </div>
+            {/* Background removed for sketch style */}
             <div className="hero-container">
                 <div className="hero-content">
                     <p className="hero-greeting animate-fade-up">Hi, I'm</p>
