@@ -33,13 +33,13 @@ export const books: Book[] = [
         author: 'James Clear',
         cover: '/images/atomic-habits-cover.jpg',
         status: 'finished',
-        thoughts: 'Probably the most impactful book I\'ve read, super practical and applicable to life.',
+        thoughts: 'Atomic Habits provides a highly effective and easy to use framework to construct healthy habits in your life. From exercise to academics, this is the most useful and applicable book I\’ve maybe ever read. Highly, highly recommend it!',
     },
     {
         title: 'The Almanack of Naval Ravikant',
         author: 'Eric Jorgenson',
         cover: '/images/navalmanack-cover.jpg',
         status: 'finished',
-        thoughts: 'Listened to this one as an audiobook. I liked it, had some good wisdom, the part about being present especially.'
+        thoughts: 'Listened to this one as an audiobook. I liked it, had some good wisdom, the part about happiness being present in the current moment.'
     },
 ]
