@@ -1,5 +1,6 @@
 import Navbar from '../components/Navbar'
 import HubCard from '../components/HubCard'
+import NewsletterCard from '../components/NewsletterCard'
 import Footer from '../components/Footer'
 import ScrollProgress from '../components/ScrollProgress'
 import { books } from '../content/books'
@@ -53,6 +54,7 @@ export default function MorePage() {
                     >
                         <p className="hub-preview-text">🚧 Under construction</p>
                     </HubCard>
+                    <NewsletterCard />
                 </div>
             </main>
             <Footer />

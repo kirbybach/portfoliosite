@@ -1872,3 +1872,31 @@ body::before {
         grid-template-columns: 1fr;
     }
 }
+/* --- Newsletter Styles (Official Embed) --- */
+
+.newsletter-embed-container {
+    margin-top: 1rem;
+}
+
+.beehiiv-embed {
+    width: 100% !important;
+}
+
+.newsletter-archive-link {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.newsletter-archive-link .btn {
+    width: 100%;
+}
+
+.hub-card-double {
+    grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+    .hub-card-double {
+        grid-column: span 1;
+    }
+}
