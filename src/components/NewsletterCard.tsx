@@ -27,7 +27,7 @@ export default function NewsletterCard() {
                 />
                 <div className="newsletter-archive-link">
                     <a
-                        href="https://getlaunchletter.beehiiv.com/"
+                        href="https://newsletter.kirbybach.me/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn btn-secondary"
