@@ -349,6 +349,7 @@ button {
 .hero-image-wrapper {
     position: relative;
     flex-shrink: 0;
+    isolation: isolate;
 }
 
 /* Sketchy frame around photo instead of glow */
@@ -357,11 +358,12 @@ button {
     inset: -8px;
     border: 3px solid var(--border-color);
     border-radius: 50%;
-    background: none;
+    background: var(--bg-primary);
     filter: none;
     opacity: 1;
     animation: none;
     box-shadow: 4px 4px 0px var(--border-color);
+    z-index: 0;
 }
 
 .hero-image {
@@ -374,6 +376,72 @@ button {
     background: var(--card-bg);
     position: relative;
     z-index: 1;
+}
+
+/* Stick Figure Hover Animation */
+.stick-figure {
+    position: absolute;
+    /* Center the container exactly at the middle of the wrapper */
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 90px;
+    /* Offset so the base (bottom center) sits at the wrapper's center */
+    margin-top: -90px;
+    margin-left: -40px;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    /* Rotate 45deg to point top-right, then translateY is along that radius */
+    transform-origin: bottom center;
+    transform: rotate(45deg) translateY(-60px); /* Tucked behind (radius 140px, top is 150px out) */
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    color: var(--border-color); /* Match sketchy style */
+}
+
+.hero-image-wrapper:hover .stick-figure {
+    opacity: 1;
+    transform: rotate(45deg) translateY(-135px); /* Slide straight out along the perpendicular normal */
+}
+
+.waving-arm-left,
+.waving-arm-right {
+    /* Shoulder joint is now at x:40 y:55 */
+    transform-origin: 40px 55px;
+}
+
+.hero-image-wrapper:hover .waving-arm-left {
+    animation: wave-left 2.5s ease-in-out infinite;
+    animation-delay: 0.1s;
+}
+
+.hero-image-wrapper:hover .waving-arm-right {
+    animation: wave-right 2.5s ease-in-out infinite;
+    animation-delay: 0.1s;
+}
+
+@keyframes wave-right {
+    /* Decaying oscillation with resting phase */
+    0% { transform: rotate(0deg); }
+    8% { transform: rotate(-20deg); }
+    16% { transform: rotate(12deg); }
+    24% { transform: rotate(-14deg); }
+    32% { transform: rotate(6deg); }
+    40% { transform: rotate(-8deg); }
+    48% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes wave-left {
+    /* Mirror of wave-right (inverse angles to oscillate in opposite direction) */
+    0% { transform: rotate(0deg); }
+    8% { transform: rotate(20deg); }
+    16% { transform: rotate(-12deg); }
+    24% { transform: rotate(14deg); }
+    32% { transform: rotate(-6deg); }
+    40% { transform: rotate(8deg); }
+    48% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
 }
 
 .hero-greeting {
