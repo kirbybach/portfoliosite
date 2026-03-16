@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.kirbybach.com/sitemap.xml
+Sitemap: https://www.kirbybach.me/sitemap.xml
