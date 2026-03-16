@@ -5,7 +5,6 @@ export default function NewsletterCard() {
         <HubCard
             title="Newsletter"
             icon="🚀"
-            description="Subscribe to Launch Letter for updates on startups and the college experience."
             isDoubleWidth
         >
             <div className="newsletter-embed-container">
