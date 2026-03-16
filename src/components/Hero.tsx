@@ -35,6 +35,18 @@ export default function Hero() {
                 </div>
                 <div className="hero-image-wrapper animate-fade-up delay-2">
                     <div className="hero-image-glow"></div>
+                    <div className="stick-figure" aria-hidden="true">
+                        <svg width="80" height="90" viewBox="0 0 80 90" xmlns="http://www.w3.org/2000/svg">
+                            {/* Head */}
+                            <circle cx="40" cy="20" r="15" fill="none" stroke="currentColor" strokeWidth="4" />
+                            {/* Body */}
+                            <line x1="40" y1="35" x2="40" y2="90" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+                            {/* Left Arm (Waving) */}
+                            <line x1="40" y1="55" x2="15" y2="40" stroke="currentColor" strokeWidth="4" strokeLinecap="round" className="waving-arm-left" />
+                            {/* Right Arm (Waving) */}
+                            <line x1="40" y1="55" x2="65" y2="40" stroke="currentColor" strokeWidth="4" strokeLinecap="round" className="waving-arm-right" />
+                        </svg>
+                    </div>
                     <img
                         src="/images/kirby-photo.jpg"
                         alt="Kirby Bach"
