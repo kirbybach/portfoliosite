@@ -391,7 +391,7 @@ button {
     margin-left: -40px;
     z-index: -1;
     pointer-events: none;
-    opacity: 0;
+    opacity: 1;
     /* Rotate 45deg to point top-right, then translateY is along that radius */
     transform-origin: bottom center;
     transform: rotate(45deg) translateY(-60px); /* Tucked behind (radius 140px, top is 150px out) */
