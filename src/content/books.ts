@@ -42,4 +42,10 @@ export const books: Book[] = [
         status: 'finished',
         thoughts: 'Listened to this one as an audiobook. I liked it, had some good wisdom, the part about happiness being present in the current moment.'
     },
+    {
+        title: 'Game of Thrones',
+        author: 'George R.R. Martin',
+        cover: '/images/game-of-thrones-cover.jpg',
+        status: 'reading',
+    },
 ]
