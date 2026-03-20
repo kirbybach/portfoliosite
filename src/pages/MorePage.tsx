@@ -29,7 +29,7 @@ export default function MorePage() {
                         linkTo="/reading"
                     >
                         <div className="hub-preview-covers">
-                            {books.slice(0, 4).map((book) => (
+                            {[...books].reverse().slice(0, 4).map((book) => (
                                 <img
                                     key={book.title}
                                     src={book.cover}

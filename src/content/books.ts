@@ -9,26 +9,6 @@ export interface Book {
 
 export const books: Book[] = [
     {
-        title: 'Chatter',
-        author: 'Ethan Kross',
-        cover: '/images/chatter-cover.jpg',
-        status: 'reading',
-    },
-    {
-        title: 'The Martian',
-        author: 'Andy Weir',
-        cover: '/images/the-martian-cover.jpg',
-        status: 'finished',
-        thoughts: 'Mark Watney is so tough. Super intense read, couldn\'t put it down.',
-    },
-    {
-        title: 'Project Hail Mary',
-        author: 'Andy Weir',
-        cover: '/images/project-hail-mary-cover.jpg',
-        status: 'finished',
-        thoughts: 'Read this before The Martian. What a great book. Super cool sci fi and just great characters.'
-    },
-    {
         title: 'Atomic Habits',
         author: 'James Clear',
         cover: '/images/atomic-habits-cover.jpg',
@@ -41,6 +21,26 @@ export const books: Book[] = [
         cover: '/images/navalmanack-cover.jpg',
         status: 'finished',
         thoughts: 'Listened to this one as an audiobook. I liked it, had some good wisdom, the part about happiness being present in the current moment.'
+    },
+    {
+        title: 'Project Hail Mary',
+        author: 'Andy Weir',
+        cover: '/images/project-hail-mary-cover.jpg',
+        status: 'finished',
+        thoughts: 'Read this before The Martian. What a great book. Super cool sci fi and just great characters.'
+    },
+    {
+        title: 'The Martian',
+        author: 'Andy Weir',
+        cover: '/images/the-martian-cover.jpg',
+        status: 'finished',
+        thoughts: 'Mark Watney is so tough. Super intense read, couldn\'t put it down.',
+    },
+    {
+        title: 'Chatter',
+        author: 'Ethan Kross',
+        cover: '/images/chatter-cover.jpg',
+        status: 'reading',
     },
     {
         title: 'Game of Thrones',

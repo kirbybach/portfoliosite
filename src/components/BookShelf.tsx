@@ -31,7 +31,7 @@ const groupTitles: Record<Book['status'], string> = {
 }
 
 export default function BookShelf() {
-    const groups = groupByStatus(books)
+    const groups = groupByStatus([...books].reverse())
 
     return (
         <section className="bookshelf-section">
