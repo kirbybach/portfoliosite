@@ -48,4 +48,10 @@ export const books: Book[] = [
         cover: '/images/game-of-thrones-cover.jpg',
         status: 'reading',
     },
+    {
+        title: 'Don\'t Believe Everything You Think: Why Your Thinking Is the Beginning & End of Suffering',
+        author: 'Joseph Nguyen',
+        cover: '/images/dont-believe-everything-you-thnk.jpg',
+        status: 'reading',
+    },
 ]
