@@ -5,15 +5,20 @@ const statusLabel: Record<Book['status'], string> = {
     'reading': '📖 Reading',
     'finished': '✓ Finished',
     'want-to-read': '📋 Up Next',
+    'shelved': '⌛ Shelved',
 }
+
 
 const statusClass: Record<Book['status'], string> = {
     'reading': 'status-reading',
     'finished': 'status-finished',
     'want-to-read': 'status-next',
+    'shelved': 'status-shelved',
 }
 
-const statusOrder: Book['status'][] = ['reading', 'finished', 'want-to-read']
+
+const statusOrder: Book['status'][] = ['reading', 'finished', 'want-to-read', 'shelved']
+
 
 function groupByStatus(bookList: Book[]) {
     const groups: Partial<Record<Book['status'], Book[]>> = {}
@@ -28,7 +33,9 @@ const groupTitles: Record<Book['status'], string> = {
     'reading': 'Currently Reading',
     'finished': 'Finished',
     'want-to-read': 'Up Next',
+    'shelved': 'Shelved / Paused',
 }
+
 
 export default function BookShelf() {
     const groups = groupByStatus([...books].reverse())
