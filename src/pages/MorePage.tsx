@@ -4,8 +4,15 @@ import NewsletterCard from '../components/NewsletterCard'
 import Footer from '../components/Footer'
 import ScrollProgress from '../components/ScrollProgress'
 import { books } from '../content/books'
+import type { Book } from '../content/books'
+
+const previewStatusOrder: Book['status'][] = ['reading', 'finished', 'shelved', 'want-to-read']
 
 export default function MorePage() {
+    const previewBooks = [...books]
+        .reverse()
+        .sort((a, b) => previewStatusOrder.indexOf(a.status) - previewStatusOrder.indexOf(b.status))
+
     return (
         <>
             <ScrollProgress />
@@ -29,7 +36,7 @@ export default function MorePage() {
                         linkTo="/reading"
                     >
                         <div className="hub-preview-covers">
-                            {[...books].reverse().slice(0, 4).map((book) => (
+                            {previewBooks.slice(0, 4).map((book) => (
                                 <img
                                     key={book.title}
                                     src={book.cover}
