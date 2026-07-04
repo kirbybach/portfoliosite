@@ -55,6 +55,12 @@ export const books: Book[] = [
         title: 'A Clash of Kings',
         author: 'George R.R. Martin',
         cover: '/images/clashofkingscover.jpg',
+        status: 'finished',
+    },
+    {
+        title: 'A Storm of Swords',
+        author: 'George R.R. Martin',
+        cover: '/images/stormofswords.jpg',
         status: 'reading',
     },
     {
