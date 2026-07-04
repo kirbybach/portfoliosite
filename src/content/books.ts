@@ -56,6 +56,7 @@ export const books: Book[] = [
         author: 'George R.R. Martin',
         cover: '/images/clashofkingscover.jpg',
         status: 'finished',
+        thoughts: 'Great continuation of the story, really enjoying the series.',
     },
     {
         title: 'A Storm of Swords',
