@@ -2,7 +2,7 @@
    DESIGN SYSTEM - Crayon / Hand-Drawn
    =================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Patrick+Hand&family=Permanent+Marker&display=swap');
 
 :root {
     --bg-primary: #fffdf7;
@@ -489,6 +489,137 @@ button {
     gap: 1rem;
     justify-content: flex-start;
     flex-wrap: wrap;
+}
+
+/* Newsletter note placement — the note itself preserves the original CodePen geometry */
+.hero-newsletter-note-slot {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    width: 200px;
+    height: 200px;
+    z-index: 2;
+}
+
+.hero-newsletter-note {
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 200px;
+    height: 200px;
+    color: var(--text-primary);
+    background-color: #ffff66;
+    border: 0;
+    font-family: 'Permanent Marker', var(--font-body);
+}
+
+.hero-newsletter-note:hover {
+    color: var(--text-primary);
+}
+
+.hero-newsletter-note:focus-visible {
+    color: var(--text-primary);
+    outline: 4px solid var(--accent-blue);
+    outline-offset: 5px;
+}
+
+.hero-newsletter-copy {
+    position: absolute;
+    z-index: 20;
+    top: 20px;
+    left: 20px;
+    display: block;
+    font-size: 1.25rem;
+    font-weight: normal;
+    line-height: 1.4;
+}
+
+.hero-newsletter-copy span {
+    display: block;
+}
+
+.hero-note-peel {
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    right: 0;
+    height: 60px;
+    width: 60px;
+    background-color: #FFFFFF;
+    transition: width 500ms, height 500ms;
+}
+
+.hero-newsletter-note:hover .hero-note-peel,
+.hero-newsletter-note:focus .hero-note-peel {
+    height: 100px;
+    width: 100px;
+    transition: width 500ms, height 500ms;
+}
+
+.hero-newsletter-note:hover .hero-note-peel::before,
+.hero-newsletter-note:focus .hero-note-peel::before {
+    height: 50px;
+    width: 100px;
+    transition: width 500ms, height 500ms;
+}
+
+.hero-newsletter-note:hover .hero-note-peel::after,
+.hero-newsletter-note:focus .hero-note-peel::after {
+    height: 100px;
+    width: 50px;
+    right: 50px;
+    transition: width 500ms, height 500ms, right 500ms;
+}
+
+.hero-newsletter-note:hover .hero-note-peel-back,
+.hero-newsletter-note:focus .hero-note-peel-back {
+    bottom: 8.5px;
+    right: 32.5px;
+    width: 40px;
+    height: 77.5px;
+    transition: width 500ms, height 500ms, right 500ms, bottom 500ms;
+}
+
+.hero-note-peel::before {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    right: 0;
+    content: '';
+    height: 31px;
+    width: 61px;
+    background-color: #ffff66;
+    border-bottom: 1px solid #b8b84a;
+    border-radius: 0 0 50% 0;
+    transition: width 500ms, height 500ms;
+    background: -webkit-gradient(linear, 76% 85%, 82% 100%, from(#ffff66), to(#b8b84a));
+}
+
+.hero-note-peel::after {
+    position: absolute;
+    z-index: 6;
+    bottom: 0;
+    right: 30px;
+    content: '';
+    height: 61px;
+    width: 31px;
+    background-color: #ffff66;
+    border-radius: 0 0 50% 0;
+    transition: width 500ms, height 500ms, right 500ms;
+    background: -webkit-gradient(linear, 56% 94%, 67% 100%, from(#ffff66), to(#b8b84a));
+}
+
+.hero-note-peel-back {
+    position: absolute;
+    z-index: 2;
+    bottom: 5px;
+    right: 19px;
+    width: 20px;
+    height: 46px;
+    background-color: #cccc6a;
+    transform: rotate(45deg);
+    transition: width 500ms, height 500ms, right 500ms, bottom 500ms;
+    box-shadow: 0 0 5px 2px #808033;
 }
 
 .scroll-indicator {
@@ -1228,6 +1359,22 @@ button {
         gap: 0.75rem;
     }
 
+    .hero-newsletter-note-slot {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        align-self: flex-end;
+        flex: 0 0 auto;
+        width: 130px;
+        height: 130px;
+        margin: 1.5rem var(--container-padding) 1.25rem 0;
+    }
+
+    .hero-newsletter-note {
+        transform: scale(0.65);
+        transform-origin: top left;
+    }
+
     .btn {
         width: 100%;
         max-width: 280px;
@@ -1308,6 +1455,16 @@ button {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-note-peel,
+    .hero-note-peel::before,
+    .hero-note-peel::after,
+    .hero-note-peel-back {
+        animation: none;
+        transition: none;
     }
 }
 

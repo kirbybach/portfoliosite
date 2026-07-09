@@ -54,6 +54,24 @@ export default function Hero() {
                     />
                 </div>
             </div>
+            <div className="hero-newsletter-note-slot">
+                <a
+                    href="https://getlaunchletter.beehiiv.com/"
+                    className="hero-newsletter-note"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Read The Launch Letter newsletter"
+                >
+                    <span className="hero-newsletter-copy">
+                        <span>Pssttt...</span>
+                        <span>Read my</span>
+                        <span>newsletter! →</span>
+                    </span>
+                    <span className="hero-note-peel" aria-hidden="true">
+                        <span className="hero-note-peel-back"></span>
+                    </span>
+                </a>
+            </div>
             <div className="scroll-indicator animate-fade-up delay-4">
                 <div className="mouse">
                     <div className="wheel"></div>
