@@ -508,9 +508,30 @@ button {
     width: 200px;
     height: 200px;
     color: var(--text-primary);
-    background-color: #ffff66;
+    background-color: transparent;
     border: 0;
     font-family: 'Permanent Marker', var(--font-body);
+}
+
+.hero-newsletter-paper-shadow {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    filter: drop-shadow(-5px 6px 5px rgba(51, 51, 51, 0.35));
+}
+
+.hero-newsletter-paper {
+    position: absolute;
+    inset: 0;
+    background-color: #ffff66;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 55px), calc(100% - 55px) 100%, 0 100%);
+    transition: clip-path 500ms;
+}
+
+.hero-newsletter-note:hover .hero-newsletter-paper,
+.hero-newsletter-note:focus .hero-newsletter-paper {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 77px), calc(100% - 77px) 100%, 0 100%);
 }
 
 .hero-newsletter-note:hover {
@@ -1459,6 +1480,7 @@ button {
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .hero-newsletter-paper,
     .hero-note-peel,
     .hero-note-peel::before,
     .hero-note-peel::after,

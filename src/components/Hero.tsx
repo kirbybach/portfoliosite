@@ -62,6 +62,9 @@ export default function Hero() {
                     rel="noopener noreferrer"
                     aria-label="Read The Launch Letter newsletter"
                 >
+                    <span className="hero-newsletter-paper-shadow" aria-hidden="true">
+                        <span className="hero-newsletter-paper"></span>
+                    </span>
                     <span className="hero-newsletter-copy">
                         <span>Pssttt...</span>
                         <span>Read my</span>
