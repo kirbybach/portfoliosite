@@ -3,6 +3,8 @@ const experiences = [
         date: 'Jan 2026 – Present',
         title: 'President',
         company: 'CS For Good Club • Notre Dame',
+        url: 'https://www.linkedin.com/company/cs4good-notre-dame',
+        logo: '/images/cs4good-logo.png',
         details: [
             'Lead student organization developing software solutions for local non-profits',
             'Oversee multiple technical projects bridging clients with student teams',
@@ -41,9 +43,26 @@ export default function Experience() {
                 <div className="timeline">
                     {experiences.map((exp, i) => (
                         <div key={i} className="timeline-item glass-card">
-                            <div className="timeline-date">{exp.date}</div>
-                            <h3 className="timeline-title">{exp.title}</h3>
-                            <p className="timeline-company">{exp.company}</p>
+                            <div className="timeline-header">
+                                <div>
+                                    <div className="timeline-date">{exp.date}</div>
+                                    <h3 className="timeline-title">{exp.title}</h3>
+                                    <p className="timeline-company">
+                                        {exp.url ? (
+                                            <a href={exp.url} target="_blank" rel="noreferrer">{exp.company}</a>
+                                        ) : exp.company}
+                                    </p>
+                                </div>
+                                {exp.logo && (
+                                    <a href={exp.url} target="_blank" rel="noreferrer" className="timeline-logo-link" aria-label="Visit CS For Good on LinkedIn">
+                                        <img
+                                            className="timeline-logo"
+                                            src={exp.logo}
+                                            alt="CS For Good logo"
+                                        />
+                                    </a>
+                                )}
+                            </div>
                             <ul className="timeline-details">
                                 {exp.details.map((d, j) => <li key={j}>{d}</li>)}
                             </ul>
