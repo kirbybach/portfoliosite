@@ -1,4 +1,5 @@
 import TypeWriter from './TypeWriter'
+import { MailIcon } from './Icons'
 
 export default function Hero() {
     const heroTitles = [
@@ -54,7 +55,7 @@ export default function Hero() {
                     />
                 </div>
             </div>
-            <div className="hero-newsletter-note-slot">
+            <div className="hero-newsletter-note-slot animate-fade-up delay-3">
                 <a
                     href="https://getlaunchletter.beehiiv.com/"
                     className="hero-newsletter-note"
@@ -66,9 +67,12 @@ export default function Hero() {
                         <span className="hero-newsletter-paper"></span>
                     </span>
                     <span className="hero-newsletter-copy">
-                        <span>Pssttt...</span>
+                        <span>Psst...</span>
                         <span>Read my</span>
                         <span>newsletter! →</span>
+                    </span>
+                    <span className="hero-newsletter-icon" aria-hidden="true">
+                        <MailIcon />
                     </span>
                     <span className="hero-note-peel" aria-hidden="true">
                         <span className="hero-note-peel-back"></span>

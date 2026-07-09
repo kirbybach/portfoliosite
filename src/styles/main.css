@@ -511,6 +511,7 @@ button {
     background-color: transparent;
     border: 0;
     font-family: 'Permanent Marker', var(--font-body);
+    transform: rotate(2.5deg);
 }
 
 .hero-newsletter-paper-shadow {
@@ -531,7 +532,7 @@ button {
 
 .hero-newsletter-note:hover .hero-newsletter-paper,
 .hero-newsletter-note:focus .hero-newsletter-paper {
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 77px), calc(100% - 77px) 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 95px), calc(100% - 95px) 100%, 0 100%);
 }
 
 .hero-newsletter-note:hover {
@@ -559,6 +560,18 @@ button {
     display: block;
 }
 
+.hero-newsletter-icon {
+    position: absolute;
+    z-index: 15;
+    bottom: 12px;
+    left: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+}
+
+
 .hero-note-peel {
     position: absolute;
     z-index: 0;
@@ -572,32 +585,32 @@ button {
 
 .hero-newsletter-note:hover .hero-note-peel,
 .hero-newsletter-note:focus .hero-note-peel {
-    height: 100px;
-    width: 100px;
+    height: 125px;
+    width: 125px;
     transition: width 500ms, height 500ms;
 }
 
 .hero-newsletter-note:hover .hero-note-peel::before,
 .hero-newsletter-note:focus .hero-note-peel::before {
-    height: 50px;
-    width: 100px;
+    height: 62.5px;
+    width: 125px;
     transition: width 500ms, height 500ms;
 }
 
 .hero-newsletter-note:hover .hero-note-peel::after,
 .hero-newsletter-note:focus .hero-note-peel::after {
-    height: 100px;
-    width: 50px;
-    right: 50px;
+    height: 125px;
+    width: 62.5px;
+    right: 62.5px;
     transition: width 500ms, height 500ms, right 500ms;
 }
 
 .hero-newsletter-note:hover .hero-note-peel-back,
 .hero-newsletter-note:focus .hero-note-peel-back {
-    bottom: 8.5px;
-    right: 32.5px;
-    width: 40px;
-    height: 77.5px;
+    bottom: 10.625px;
+    right: 40.625px;
+    width: 50px;
+    height: 96.875px;
     transition: width 500ms, height 500ms, right 500ms, bottom 500ms;
 }
 
