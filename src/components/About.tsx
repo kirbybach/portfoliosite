@@ -43,12 +43,13 @@ export default function About() {
                                 <span className="stat-number">2028</span>
                                 <span className="stat-label">Graduation</span>
                             </div>
-                            <div className="stat">
+                            <div className="stat nd-logo-stat">
                                 <img
+                                    className="nd-logo"
                                     src="/images/ndLogo.png"
                                     alt="University of Notre Dame logo"
-                                    style={{ width: 'auto', height: 'auto', display: 'block', margin: '0 auto' }}
                                 />
+                                <span className="stat-label">Notre Dame</span>
                             </div>
                         </div>
                     </div>

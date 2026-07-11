@@ -723,15 +723,35 @@ button {
 }
 
 .about-stats {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 2rem;
     margin-top: 2rem;
     padding-top: 2rem;
     border-top: 2px dashed var(--border-light);
+    align-items: start;
 }
 
 .stat {
     text-align: center;
+}
+
+.nd-logo-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: start;
+}
+
+.nd-logo {
+    width: clamp(78px, 8vw, 84px);
+    height: auto;
+    object-fit: contain;
+}
+
+.nd-logo-stat .stat-label {
+    margin-top: 0.4rem;
 }
 
 .stat-number {
@@ -1072,7 +1092,8 @@ button {
 }
 
 .timeline-logo {
-    width: clamp(110px, 18vw, 145px);
+    width: auto;
+    max-width: clamp(110px, 18vw, 145px);
     max-height: 86px;
     object-fit: contain;
 }
@@ -1415,7 +1436,8 @@ button {
     }
 
     .about-stats {
-        justify-content: center;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
     }
 
     .timeline::before {
@@ -1431,7 +1453,8 @@ button {
     }
 
     .timeline-logo {
-        width: 110px;
+        width: auto;
+        max-width: 110px;
     }
 
     .contact-links {
@@ -1446,7 +1469,8 @@ button {
     }
 
     .timeline-logo {
-        width: 125px;
+        width: auto;
+        max-width: 125px;
     }
 
     .tech-grid {

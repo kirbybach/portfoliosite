@@ -1,10 +1,24 @@
 const experiences = [
     {
+        date: 'May 2026 – August 2026',
+        title: 'Application Developer Intern',
+        company: 'Kahua • Alpharetta, Georgia',
+        url: 'https://kahua.com',
+        logo: '/images/kahua-logo.png',
+        logoAlt: 'Kahua logo',
+        details: [
+            'Won Best Presentation at an internal hackathon for building a React app that used the Kahua API to capture asset photos, populate records, and support inspection workflows',
+            "Developed automated unit tests for Kahua's WinUI platform to automate validation of core test cases and improve reliability across desktop application workflows",
+            "Collaborated with engineering team members to understand Kahua's construction project management platform, contribute to QA efforts, and strengthen test coverage for production features",
+        ],
+    },
+    {
         date: 'Jan 2026 – Present',
         title: 'President',
         company: 'CS For Good Club • Notre Dame',
         url: 'https://www.linkedin.com/company/cs4good-notre-dame',
         logo: '/images/cs4good-logo.png',
+        logoAlt: 'CS For Good logo',
         details: [
             'Lead student organization developing software solutions for local non-profits',
             'Oversee multiple technical projects bridging clients with student teams',
@@ -54,11 +68,11 @@ export default function Experience() {
                                     </p>
                                 </div>
                                 {exp.logo && (
-                                    <a href={exp.url} target="_blank" rel="noreferrer" className="timeline-logo-link" aria-label="Visit CS For Good on LinkedIn">
+                                    <a href={exp.url} target="_blank" rel="noreferrer" className="timeline-logo-link" aria-label={`Visit ${exp.company}`}>
                                         <img
                                             className="timeline-logo"
                                             src={exp.logo}
-                                            alt="CS For Good logo"
+                                            alt={exp.logoAlt}
                                         />
                                     </a>
                                 )}
