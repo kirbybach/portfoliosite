@@ -9,6 +9,8 @@ interface Project {
     tech: string[]
     icon: React.ReactNode
     github?: string
+    website?: string
+    openWebsiteDirectly?: boolean
     featured?: boolean
 
     demo?: string
@@ -26,14 +28,15 @@ const projects: Project[] = [
         demo: '/demos/wf2.gif', // Add your GIF here
     },
     {
-        title: 'DysbTrack',
-        description: 'WhatsApp productivity bot for accountability groups. Members commit tasks via commands, and an AI grades commits based on effort and specificity. Features goal tracking, disputes, and daily cron summaries.',
-        features: ['AI-powered commit grading with OpenAI', 'WhatsApp integration via Baileys', 'Goal tracking, disputes & undo system'],
+        title: 'CommitCrew',
+        description: 'WhatsApp productivity bot for accountability groups, renamed from DysbTrack. Members commit tasks via commands, and an AI grades commits based on effort and specificity.',
+        features: ['AI-powered commit grading with OpenAI', 'WhatsApp integration via Baileys', 'Live demo at commitcrew.kirbybach.me'],
         tech: ['TypeScript', 'WhatsApp API', 'Supabase', 'OpenAI'],
         icon: <MessageCircleIcon />,
+        github: 'https://github.com/kirbybach/CommitCrew',
+        website: 'https://commitcrew.kirbybach.me/',
+        openWebsiteDirectly: true,
         featured: true,
-
-        demo: '/demos/dysbtrackdemo.gif', // Add your GIF here
     },
     {
         title: 'Tweet Generator CLI',
@@ -70,6 +73,15 @@ const projects: Project[] = [
 export default function Projects() {
     const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
+    const handleProjectClick = (project: Project) => {
+        if (project.openWebsiteDirectly && project.website) {
+            window.open(project.website, '_blank', 'noopener,noreferrer')
+            return
+        }
+
+        setSelectedProject(project)
+    }
+
     return (
         <section id="projects" className="projects section">
             <div className="container">
@@ -79,7 +91,7 @@ export default function Projects() {
                         <article
                             key={project.title}
                             className={`project-card glass-card ${project.featured ? 'featured' : ''}`}
-                            onClick={() => setSelectedProject(project)}
+                            onClick={() => handleProjectClick(project)}
                             style={{ cursor: 'pointer' }}
                         >
                             <div className="project-header">
@@ -99,7 +111,14 @@ export default function Projects() {
                                     )}
                                 </div>
                             </div>
-                            <h3 className="project-title">{project.title}</h3>
+                            <div className="project-title-row">
+                                <h3 className="project-title">{project.title}</h3>
+                                {project.openWebsiteDirectly && (
+                                    <span className="project-live-badge">
+                                        Live demo!
+                                    </span>
+                                )}
+                            </div>
                             <p className="project-description">{project.description}</p>
                             {project.features && (
                                 <ul className="project-features">
@@ -112,7 +131,7 @@ export default function Projects() {
 
                             {/* View Details indicator */}
                             <div className="project-view-hint">
-                                <span>Click to view details</span>
+                                <span>{project.openWebsiteDirectly ? 'Open live demo' : 'Click to view details'}</span>
                             </div>
                         </article>
                     ))}
