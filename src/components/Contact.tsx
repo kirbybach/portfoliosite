@@ -6,7 +6,27 @@ const socialLinks = [
     { href: 'https://github.com/kirbybach', icon: <GithubIcon />, label: 'GitHub', value: '@kirbybach' },
 ]
 
-export default function Contact() {
+type ContactProps = {
+    eyebrow?: string
+    title?: string
+    intro?: string
+    className?: string
+    projectInquiry?: boolean
+    helperText?: string
+    availability?: string
+    initialProjectType?: string
+}
+
+export default function Contact({
+    eyebrow,
+    title = "Let's Connect",
+    intro = "I'm always open to discussing new opportunities, interesting projects, or just chatting about tech.",
+    className = '',
+    projectInquiry = false,
+    helperText,
+    availability,
+    initialProjectType,
+}: ContactProps) {
     const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -34,38 +54,54 @@ export default function Contact() {
     }
 
     return (
-        <section id="contact" className="contact section">
+        <section id="contact" className={`contact section ${className}`.trim()}>
             <div className="container">
-                <h2 className="section-title"><span className="gradient-text">Let's Connect</span></h2>
+                {eyebrow && <p className="services-eyebrow">{eyebrow}</p>}
+                <h2 className="section-title"><span className="gradient-text">{title}</span></h2>
                 <p className="contact-intro">
-                    I'm always open to discussing new opportunities, interesting projects, or just chatting about tech.
+                    {intro}
                 </p>
 
                 <div className="contact-wrapper">
-                    <form className="contact-form glass-card" onSubmit={handleSubmit}>
+                    <form className={`contact-form glass-card${projectInquiry ? ' project-inquiry-form' : ''}`} onSubmit={handleSubmit}>
                         <input type="hidden" name="access_key" value="dd2c67ec-ac72-45ca-80b2-281f128d1ac1" />
 
-                        <div className="form-group">
-                            <label htmlFor="name">Name</label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                placeholder="Your name"
-                                required
-                            />
+                        <div className={projectInquiry ? 'project-contact-row' : undefined}>
+                            <div className="form-group">
+                                <label htmlFor="name">Name</label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    placeholder="Your name"
+                                    required
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="email">Email</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="you@company.com"
+                                    required
+                                />
+                            </div>
                         </div>
 
-                        <div className="form-group">
-                            <label htmlFor="email">Email</label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="your@email.com"
-                                required
-                            />
-                        </div>
+                        {projectInquiry && (
+                            <div className="form-group">
+                                <label htmlFor="project-type">What can I help with?</label>
+                                <select id="project-type" name="project_type" defaultValue={initialProjectType ?? ''}>
+                                    <option value="" disabled>Select a project type</option>
+                                    <option value="Automation & Integrations">Automation & Integrations</option>
+                                    <option value="Internal Tools & Web Development">Internal Tools & Web Development</option>
+                                    <option value="Application Review & Technical Assessment">Application Review & Technical Assessment</option>
+                                    <option value="Something else">Something else</option>
+                                </select>
+                            </div>
+                        )}
 
                         <div className="form-group">
                             <label htmlFor="message">Message</label>
@@ -73,10 +109,12 @@ export default function Contact() {
                                 id="message"
                                 name="message"
                                 rows={5}
-                                placeholder="What would you like to discuss?"
+                                placeholder={projectInquiry ? 'What are you trying to improve, build, or automate?' : 'What would you like to discuss?'}
                                 required
                             />
                         </div>
+
+                        {helperText && <p className="contact-helper">{helperText}</p>}
 
                         <button
                             type="submit"
@@ -92,9 +130,10 @@ export default function Contact() {
                         {formStatus === 'error' && (
                             <p className="form-error">Something went wrong. Please try again.</p>
                         )}
+                        {availability && <p className="contact-availability"><span aria-hidden="true">●</span> {availability}</p>}
                     </form>
 
-                    <div className="social-links">
+                    {!projectInquiry && <div className="social-links">
                         <p className="social-label">Or find me on</p>
                         <div className="social-cards">
                             {socialLinks.map((c) => (
@@ -111,7 +150,7 @@ export default function Contact() {
                                 </a>
                             ))}
                         </div>
-                    </div>
+                    </div>}
                 </div>
             </div>
         </section>

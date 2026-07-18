@@ -7,6 +7,7 @@ export default function Navbar() {
     const location = useLocation()
     const isHome = location.pathname === '/'
     const isMoreSection = location.pathname === '/more' || location.pathname === '/reading' || location.pathname === '/projects'
+    const isServices = location.pathname === '/services'
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -33,6 +34,9 @@ export default function Navbar() {
                             <li><Link to="/" onClick={handleLinkClick}>Home</Link></li>
                         </>
                     )}
+                    <li>
+                        <Link to="/services" onClick={handleLinkClick} className={isServices ? 'nav-active' : ''}>Services</Link>
+                    </li>
                     <li>
                         <Link
                             to="/more"
