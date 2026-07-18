@@ -17,7 +17,7 @@ const experiences = [
         title: 'President',
         company: 'CS For Good Club • Notre Dame',
         url: 'https://www.linkedin.com/company/cs4good-notre-dame',
-        logo: '/images/cs4good-logo.png',
+        logo: '/images/cs4good-text-logo.png',
         logoAlt: 'CS For Good logo',
         details: [
             'Lead student organization developing software solutions for local non-profits',
