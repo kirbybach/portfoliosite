@@ -1431,9 +1431,14 @@ button {
     animation: technology-scroll 52s linear infinite;
 }
 
-.technology-marquee:hover .technology-track,
-.technology-marquee:focus-within .technology-track {
+.technology-marquee:focus-visible .technology-track {
     animation-play-state: paused;
+}
+
+@media (hover: hover) {
+    .technology-marquee:hover .technology-track {
+        animation-play-state: paused;
+    }
 }
 
 .technology-marquee-reverse .technology-track {
