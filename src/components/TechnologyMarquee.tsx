@@ -4,7 +4,7 @@ const technologyRows = [[
     { name: 'Firebase', icon: '/images/technologies/firebase.svg' },
     { name: 'Node.js', icon: '/images/technologies/nodejs.svg' },
     { name: 'Airtable', icon: '/images/technologies/airtable.svg' },
-    { name: 'OpenPhone', icon: '/images/technologies/openphone.svg' },
+    { name: 'Quo', icon: '/images/technologies/quo.svg' },
     { name: 'HighLevel', icon: '/images/technologies/highlevel.svg' },
 ], [
     { name: 'JavaScript', icon: '/images/technologies/javascript.svg' },
