@@ -62,6 +62,13 @@ export const books: Book[] = [
         title: 'A Storm of Swords',
         author: 'George R.R. Martin',
         cover: '/images/stormofswords.jpg',
+        status: 'finished',
+        thoughts: 'This series is so good, I understand the hype, best book in the series so far.'
+    },
+    {
+        title: 'A Feast For Crows',
+        author: 'George R.R. Martin',
+        cover: '/images/feastforcrowscover.jpg',
         status: 'reading',
     },
     {
