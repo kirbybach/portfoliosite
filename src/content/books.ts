@@ -14,7 +14,7 @@ export const books: Book[] = [
         author: 'James Clear',
         cover: '/images/atomic-habits-cover.jpg',
         status: 'finished',
-        thoughts: 'This is the most useful and applicable book I\’ve maybe ever read. Highly recommend it!',
+        thoughts: 'This is the most useful and applicable book I’ve maybe ever read. Highly recommend it!',
     },
     {
         title: 'The Almanack of Naval Ravikant',
@@ -77,5 +77,17 @@ export const books: Book[] = [
         cover: '/images/dont-believe-everything-you-thnk.jpg',
         status: 'shelved',
 
+    },
+    {
+        title: 'Operating Systems: Three Easy Pieces',
+        author: 'Remzi Arpaci-Dusseau and Andrea Arpaci-Dusseau',
+        cover: '/images/operating-systems-three-easy-pieces-cover.png',
+        status: 'reading',
+    },
+    {
+        title: 'The Happiness Trap, Second Edition',
+        author: 'Russ Harris',
+        cover: '/images/the-happiness-trap-cover.png',
+        status: 'reading',
     },
 ]
