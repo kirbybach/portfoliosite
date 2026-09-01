@@ -4,6 +4,8 @@ import { MailIcon } from './Icons'
 export default function Hero() {
     const heroTitles = [
         'Full-Stack Developer',
+        'OpenAI Campus Lead',
+        'President of CS4Good',
         'CLI Enthusiast',
         'Builder of Cool Things'
     ]

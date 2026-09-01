@@ -4,7 +4,7 @@ const experiences = [
         title: 'Campus Lead',
         company: 'OpenAI • Notre Dame, Indiana',
         url: 'https://openai.com/',
-        logo: '/images/openai-logo.svg',
+        logo: '/images/openai-logo.png',
         logoAlt: 'OpenAI logo',
         details: [
             'Serve as a Campus Lead for the OpenAI Student Collective, working to ensure that AI benefits students at the University of Notre Dame',
