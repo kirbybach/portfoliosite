@@ -7,6 +7,8 @@ export default function Hero() {
         'OpenAI Campus Lead',
         'President of CS4Good',
         'CLI Enthusiast',
+        'Rec League Hooper',
+        'John Mayer Enjoyer',
         'Builder of Cool Things'
     ]
 
