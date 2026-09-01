@@ -1,5 +1,16 @@
 const experiences = [
     {
+        date: 'August 2026 – Present',
+        title: 'Campus Lead',
+        company: 'OpenAI • Notre Dame, Indiana',
+        url: 'https://openai.com/',
+        details: [
+            'Serve as a Campus Lead for the OpenAI Student Collective, working to ensure that AI benefits students at the University of Notre Dame',
+            'Host workshops, studio hours, and other opportunities for students to explore, learn, and build with ChatGPT and OpenAI tools',
+            'Help students move beyond simply using AI to think critically and creatively about what they can build with it',
+        ],
+    },
+    {
         date: 'May 2026 – August 2026',
         title: 'Application Developer Intern',
         company: 'Kahua • Alpharetta, Georgia',
