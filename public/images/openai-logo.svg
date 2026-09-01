@@ -4,12 +4,6 @@
       --primary-fill: #fff;
       --secondary-fill: #000;
     }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --primary-fill: #000;
-        --secondary-fill: #fff;
-      }
-    }
   </style>
   <g clip-path="url(#a)">
     <rect width="180" height="180" fill="var(--primary-fill)" rx="90" />
