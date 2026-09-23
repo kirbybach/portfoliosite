@@ -82,6 +82,8 @@ const projects: Project[] = [
 
 export default function Projects() {
     const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+    const [showAllProjects, setShowAllProjects] = useState(false)
+    const visibleProjects = showAllProjects ? projects : projects.slice(0, 6)
 
     const handleProjectClick = (project: Project) => {
         if (project.openWebsiteDirectly && project.website) {
@@ -96,8 +98,8 @@ export default function Projects() {
         <section id="projects" className="projects section">
             <div className="container">
                 <h2 className="section-title"><span className="gradient-text">Featured Projects</span></h2>
-                <div className="projects-grid">
-                    {projects.map((project) => (
+                <div className="projects-grid" id="projects-grid">
+                    {visibleProjects.map((project) => (
                         <article
                             key={project.title}
                             className={`project-card glass-card ${project.featured ? 'featured' : ''}`}
@@ -146,6 +148,19 @@ export default function Projects() {
                         </article>
                     ))}
                 </div>
+                {projects.length > 6 && (
+                    <div className="projects-expand">
+                        <button
+                            type="button"
+                            className="btn btn-secondary"
+                            aria-controls="projects-grid"
+                            aria-expanded={showAllProjects}
+                            onClick={() => setShowAllProjects((current) => !current)}
+                        >
+                            {showAllProjects ? 'Show fewer projects' : `Show all ${projects.length} projects`}
+                        </button>
+                    </div>
+                )}
             </div>
 
             <ProjectModal

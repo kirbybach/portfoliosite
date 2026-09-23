@@ -821,6 +821,16 @@ button {
     gap: 1.5rem;
 }
 
+.projects-expand {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.projects-expand .btn {
+    cursor: pointer;
+}
+
 .project-card {
     padding: 1.75rem;
     display: flex;
