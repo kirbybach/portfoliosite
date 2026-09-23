@@ -39,6 +39,16 @@ const projects: Project[] = [
         featured: true,
     },
     {
+        title: 'Python Lab',
+        description: 'Interactive Python interview practice with short concept cards, runnable code drills, and instant test feedback.',
+        features: ['15 focused drills across dictionaries, sorting, strings, and event streams', 'Python runs in the browser with test feedback', 'Progress and drafts saved on your device'],
+        tech: ['Python', 'React', 'TypeScript', 'Pyodide'],
+        icon: <TerminalIcon />,
+        website: 'https://python.kirbybach.me/',
+        openWebsiteDirectly: true,
+        featured: true,
+    },
+    {
         title: 'Tweet Generator CLI',
         description: 'AI-powered CLI that turns files, URLs, or YouTube videos into engaging tweets. Features interactive refinement, style learning to clone your voice, and support for local LLMs via Ollama.',
         features: ['Source agnostic: files, URLs, YouTube transcripts', 'Style Mirror persona learning with verification', 'Interactive co-pilot with visual diffs'],
