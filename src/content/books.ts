@@ -69,8 +69,16 @@ export const books: Book[] = [
         title: 'A Feast For Crows',
         author: 'George R.R. Martin',
         cover: '/images/feastforcrowscover.jpg',
+        status: 'finished',
+        thoughts: 'sad that I only have one book left, this one was probably the worst so far but still really good, didn\'t love the splitting up of the characters.'
+    },
+    {
+        title: 'A Dance With Dragons',
+        author: 'George R.R. Martin',
+        cover: '/images/dancewithdragons.jpg',
         status: 'reading',
     },
+
     {
         title: 'Don\'t Believe Everything You Think: Why Your Thinking Is the Beginning & End of Suffering',
         author: 'Joseph Nguyen',
