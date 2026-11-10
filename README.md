@@ -5,7 +5,7 @@ Personal portfolio site built with React, TypeScript, and Vite.
 ## Pages
 
 - **Home** — Hero, about, experience, and contact sections
-- **More** — Hub linking to reading list and project writeups
+- **More** — Compact hub linking to the reading list and The Launch Letter newsletter
 - **Reading** — Bookshelf of current and finished reads
 - **Projects** — Detailed project writeups and demos
 

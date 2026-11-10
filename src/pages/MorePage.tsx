@@ -17,14 +17,14 @@ export default function MorePage() {
         <>
             <ScrollProgress />
             <Navbar />
-            <main className="content-page">
+            <main className="content-page more-page">
                 <div className="content-header">
                     <div className="container">
                         <h1 className="content-header-title animate-fade-up">
                             <span className="gradient-text">More</span>
                         </h1>
                         <p className="content-header-subtitle animate-fade-up">
-                            A collection of what I'm reading and building.
+                            What I'm reading and thinking about.
                         </p>
                     </div>
                 </div>
@@ -34,6 +34,7 @@ export default function MorePage() {
                         icon="📚"
                         description="Books I've read and what I thought about them."
                         linkTo="/reading"
+                        linkLabel="Browse the bookshelf →"
                     >
                         <div className="hub-preview-covers">
                             {previewBooks.slice(0, 4).map((book) => (
@@ -51,15 +52,6 @@ export default function MorePage() {
                                 </div>
                             )}
                         </div>
-                    </HubCard>
-                    <HubCard
-                        title="Project Writeups"
-                        icon="🛠"
-                        description="Deep dives into what I'm building and lessons learned."
-                        linkTo="/projects"
-                        disabled
-                    >
-                        <p className="hub-preview-text">🚧 Under construction</p>
                     </HubCard>
                     <NewsletterCard />
                 </div>

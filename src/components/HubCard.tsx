@@ -5,12 +5,14 @@ interface HubCardProps {
     icon: string
     description?: string
     linkTo?: string
+    href?: string
+    linkLabel?: string
     disabled?: boolean
     isDoubleWidth?: boolean
     children?: React.ReactNode
 }
 
-export default function HubCard({ title, icon, description, linkTo, disabled, isDoubleWidth, children }: HubCardProps) {
+export default function HubCard({ title, icon, description, linkTo, href, linkLabel, disabled, isDoubleWidth, children }: HubCardProps) {
     const isLink = !!linkTo && !disabled
 
     const cardContent = (
@@ -21,13 +23,17 @@ export default function HubCard({ title, icon, description, linkTo, disabled, is
             </div>
             {description && <p className="hub-card-description">{description}</p>}
             {children && <div className="hub-card-preview">{children}</div>}
-            {linkTo && (
+            {(linkTo || href) && (
                 <span className="hub-card-link">
-                    {disabled ? 'Coming soon' : 'View →'}
+                    {disabled ? 'Coming soon' : (linkLabel || 'View →')}
                 </span>
             )}
         </div>
     )
+
+    if (href && !disabled) {
+        return <a href={href} className="hub-card-wrapper" target="_blank" rel="noopener noreferrer">{cardContent}</a>
+    }
 
     if (!isLink) {
         return cardContent
