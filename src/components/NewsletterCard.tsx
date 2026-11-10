@@ -1,19 +1,26 @@
-import HubCard from './HubCard'
-
 export default function NewsletterCard() {
     return (
-        <HubCard
-            title="Newsletter"
-            icon="🚀"
-            description="A little more of what’s on my mind."
-            href="https://getlaunchletter.beehiiv.com/"
-            linkLabel="Read & subscribe →"
-        >
-            <div className="newsletter-preview">
-                <span className="newsletter-preview-label">A note from Kirby</span>
-                <span className="newsletter-preview-title">The Launch Letter</span>
-                <span className="newsletter-preview-detail">Read an issue. Stick around for the next.</span>
+        <section className="hub-card glass-card newsletter-card" aria-labelledby="newsletter-title">
+            <div className="hub-card-header">
+                <span className="hub-card-icon" aria-hidden="true">🚀</span>
+                <h3 className="hub-card-title" id="newsletter-title">Newsletter</h3>
             </div>
-        </HubCard>
+            <p className="hub-card-description">New notes, projects, and discoveries, straight to your inbox.</p>
+            <div className="newsletter-signup-frame">
+                <iframe
+                    src="https://subscribe-forms.beehiiv.com/59a76f52-8332-4625-89ff-aa0c4bcbbdc6"
+                    className="newsletter-signup"
+                    title="Subscribe to Kirby Bach’s newsletter"
+                />
+            </div>
+            <a
+                href="https://getlaunchletter.beehiiv.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hub-card-link newsletter-archive"
+            >
+                Read past issues →
+            </a>
+        </section>
     )
 }
