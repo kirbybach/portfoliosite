@@ -37,7 +37,7 @@ export default function MorePage() {
                         linkLabel="Browse the bookshelf →"
                     >
                         <div className="hub-preview-covers">
-                            {previewBooks.slice(0, 4).map((book) => (
+                            {previewBooks.slice(0, 7).map((book) => (
                                 <img
                                     key={book.title}
                                     src={book.cover}
@@ -46,9 +46,9 @@ export default function MorePage() {
                                     title={book.title}
                                 />
                             ))}
-                            {books.length > 4 && (
+                            {books.length > 7 && (
                                 <div className="hub-mini-cover-more">
-                                    <span>+{books.length - 4}</span>
+                                    <span>+{books.length - 7}</span>
                                 </div>
                             )}
                         </div>

@@ -2794,7 +2794,22 @@ body::before {
 }
 
 .more-page .hub-preview-covers {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem 0.75rem;
+    width: 100%;
     margin-top: 0;
+}
+
+.more-page .hub-mini-cover,
+.more-page .hub-mini-cover-more {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 3;
+}
+
+.more-page .hub-mini-cover-more {
+    font-size: 1.1rem;
 }
 
 .more-page .hub-card-wrapper:focus-visible {
@@ -2804,7 +2819,7 @@ body::before {
 }
 
 .more-page .hub-grid {
-    align-items: start;
+    align-items: stretch;
 }
 
 .newsletter-signup-frame {
@@ -2822,7 +2837,8 @@ body::before {
 
 .newsletter-archive {
     align-self: flex-start;
-    margin-top: 1rem;
+    margin-top: auto;
+    padding-top: 1rem;
 }
 
 @media (max-width: 640px) {
