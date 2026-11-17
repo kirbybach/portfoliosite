@@ -44,6 +44,12 @@ export default function Hero() {
                         <svg width="80" height="90" viewBox="0 0 80 90" xmlns="http://www.w3.org/2000/svg">
                             {/* Head */}
                             <circle cx="40" cy="20" r="15" fill="none" stroke="currentColor" strokeWidth="4" />
+                            <g className="santa-hat" stroke="currentColor" strokeWidth="2.8" strokeLinejoin="round" strokeLinecap="round">
+                                <path fill="#d94640" d="M24 9 Q26 -4 37 -16 Q43 -23 51 -18 Q60 -14 62 -3 L63 1 Q58 -7 51 -8 Q50 -1 55 9 Z" />
+                                <path d="M48 -13 Q50 -11 51 -8" fill="none" strokeWidth="1.6" />
+                                <path fill="#fffaf0" d="M23 6 Q36 2 52 4 Q57 4 57 9 Q58 13 53 13 Q38 11 25 15 Q21 15 21 11 Q20 8 23 6 Z" />
+                                <path fill="#fffaf0" d="M62 -4 Q66 -5 67 -2 Q71 0 68 4 Q66 8 62 6 Q58 7 57 3 Q55 0 58 -2 Q59 -5 62 -4 Z" />
+                            </g>
                             {/* Body */}
                             <line x1="40" y1="35" x2="40" y2="90" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
                             {/* Left Arm (Waving) */}

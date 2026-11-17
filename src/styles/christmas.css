@@ -1,0 +1,114 @@
+.santa-hat {
+    display: none;
+}
+
+.christmas-mode .santa-hat {
+    display: inline;
+}
+
+.christmas-mode .stick-figure svg {
+    overflow: visible;
+}
+
+.christmas-mode .navbar::after,
+.christmas-mode .nav-links.active::after {
+    content: '';
+    position: absolute;
+    inset: 100% 0 auto;
+    height: 38px;
+    background: url('../assets/christmas-lights.svg') repeat-x center top;
+    pointer-events: none;
+}
+
+.christmas-mode .nav-links.active::after {
+    display: none;
+}
+
+.christmas-snow {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    overflow: hidden;
+    contain: strict;
+    pointer-events: none;
+}
+
+.christmas-snow i {
+    position: absolute;
+    top: -12px;
+    left: var(--left);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: #fffefd;
+    border: 1px solid rgb(100 128 143 / 34%);
+    animation: christmas-fall var(--duration) var(--delay) linear infinite;
+}
+
+@keyframes christmas-fall {
+    0% { opacity: 0; transform: translate3d(0, 0, 0); }
+    10%, 90% { opacity: .85; }
+    100% { opacity: 0; transform: translate3d(var(--drift), calc(100vh + 24px), 0); }
+}
+
+.christmas-snow[data-paused="true"] i {
+    animation-play-state: paused;
+}
+
+@media (min-width: 769px) {
+    .christmas-mode .hero {
+        min-height: max(100vh, 570px);
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) and (hover: hover) {
+    .christmas-mode .hero-image-wrapper:hover .stick-figure {
+        transform: rotate(27deg) translateY(-123px);
+    }
+}
+
+@media (hover: none), (max-width: 768px) {
+    .christmas-mode .stick-figure,
+    .christmas-mode .hero-image-wrapper:hover .stick-figure {
+        display: block;
+        transform: rotate(34deg) translateY(var(--peek-distance, -109px)) scale(.8);
+    }
+}
+
+@media (max-width: 768px) {
+    .christmas-mode .hero {
+        padding-top: 124px;
+    }
+
+    .christmas-mode .stick-figure {
+        --peek-distance: -65px;
+    }
+
+    .christmas-mode .navbar:has(.nav-links.active)::after {
+        display: none;
+    }
+
+    .christmas-mode .nav-links.active::after {
+        display: block;
+    }
+
+    .christmas-snow i:nth-child(even) {
+        display: none;
+        animation: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .christmas-snow {
+        display: none;
+    }
+
+    .christmas-snow i,
+    .christmas-mode .hero-image-wrapper:hover .stick-figure line {
+        animation: none;
+    }
+
+    .christmas-mode .stick-figure {
+        transition: none;
+    }
+}

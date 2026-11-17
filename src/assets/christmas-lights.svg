@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="246" height="38" viewBox="0 0 246 38" fill="none">
+  <defs>
+    <radialGradient id="glow">
+      <stop stop-color="#ffd778" stop-opacity=".62"/>
+      <stop offset="1" stop-color="#ffdc84" stop-opacity="0"/>
+    </radialGradient>
+    <g id="bulb" stroke="#3e433b" stroke-linejoin="round" stroke-linecap="round">
+      <circle cy="12" r="12" fill="url(#glow)" stroke="none"/>
+      <path d="M-3 4 Q-6 9 -3 15 Q0 22 3 15 Q7 8 3 4 Z" fill="currentColor" stroke-width="1.4"/>
+      <path d="M-1.9 8 Q-2.6 10 -1.8 12" stroke="#fffaf0" stroke-width="1.4" opacity=".92"/>
+      <path d="M-2.5 0 L2.6 .2 L2.8 4.5 L-2.7 4.2 Z" fill="#57574a" stroke-width="1.2"/>
+    </g>
+  </defs>
+  <path d="M-1 2 Q61 23 123 11 Q186 22 247 2" stroke="#41453d" stroke-width="1.65"/>
+  <use href="#bulb" transform="translate(32 10) rotate(-12)" color="#e25047"/>
+  <use href="#bulb" transform="translate(111 13) rotate(8)" color="#eeb340"/>
+  <use href="#bulb" transform="translate(202 12) rotate(15)" color="#519774"/>
+  <path d="M-5 1 L4 0 L6 5 L-3 6 Z M241 1 L250 0 L252 5 L243 6 Z" fill="#e6cf95" fill-opacity=".83"/>
+</svg>
