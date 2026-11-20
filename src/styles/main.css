@@ -1083,10 +1083,6 @@ button {
         animation: guess-pedal-singe var(--cycle) linear var(--phase) infinite;
     }
 
-    .guess-pedal-card:is(:hover, :focus-within) .guess-pedal-ember {
-        transform: translate(var(--step), -2px);
-    }
-
     .guess-pedal-ember::before,
     .guess-pedal-ember::after {
         content: '';
