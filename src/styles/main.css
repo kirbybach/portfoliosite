@@ -1015,7 +1015,51 @@ button {
 
 .guess-pedal-card::after {
     content: '';
-    background: url('../assets/guess-pedal-paper.svg') center / 100% 100% no-repeat;
+    background: url('../assets/guess-pedal-pixels.svg') center / 100% 100% no-repeat;
+}
+
+.guess-pedal-fragments {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.guess-pedal-fragments::before,
+.guess-pedal-fragments::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+}
+
+.guess-pedal-fragments::before {
+    top: 12px;
+    right: 28px;
+    background: #e86639;
+    box-shadow: 14px -8px 0 -2px #ff9c51, 22px 12px 0 -1px #b74332;
+}
+
+.guess-pedal-fragments::after {
+    left: 20px;
+    bottom: 16px;
+    background: #743324;
+    box-shadow: -12px -14px 0 -1px #ae5230, 12px 10px 0 -2px #9e4129;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .guess-pedal-fragments::before,
+    .guess-pedal-fragments::after {
+        transition: transform 240ms steps(3, end);
+    }
+
+    .guess-pedal-card:is(:hover, :focus-within) .guess-pedal-fragments::before {
+        transform: translate(9px, -9px);
+    }
+
+    .guess-pedal-card:is(:hover, :focus-within) .guess-pedal-fragments::after {
+        transform: translate(-9px, 6px);
+    }
 }
 
 .guess-pedal-title {
@@ -1066,7 +1110,7 @@ button {
     .guess-pedal-card {
         align-content: stretch;
         grid-template: auto minmax(6rem, 1fr) auto auto / minmax(0, 1fr);
-        padding: 3rem 9%;
+        padding: 3.75rem 9%;
         min-height: 25rem;
         background: linear-gradient(#65251d 50%, #491c16);
     }
@@ -1088,7 +1132,7 @@ button {
         position: relative;
         grid-area: 1 / 1 / 3 / 2;
         justify-self: stretch;
-        margin: -3rem -11% 0;
+        margin: -3.75rem -11% 0;
         background-position: 78% bottom;
     }
 

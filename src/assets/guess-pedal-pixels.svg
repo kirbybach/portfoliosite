@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="#fffdf7" shape-rendering="crispEdges">
+  <defs>
+    <!-- No viewBox: the edge repeats in CSS pixels, so the pieces stay square on phones. -->
+    <pattern id="rim" width="224" height="48" patternUnits="userSpaceOnUse">
+      <path fill-rule="evenodd" d="M0 0h224v8h-16v8h-16v-4h-24v8h-12v-8h-40v4H96v8H80V12H56v4H40v-8H16v4H0Z
+        M84 8h8v8h-8Z M176 4h4v4h-4Z"/>
+      <path d="M20 16h8v8h-8z M64 20h4v4h-4z M104 24h8v8h-8z M152 24h4v4h-4z M200 20h4v4h-4z"/>
+    </pattern>
+    <pattern id="side" width="32" height="136" patternUnits="userSpaceOnUse">
+      <path fill-rule="evenodd" d="M0 0h12v20h4v16h-8v24h4v12h8v20h-8v20H8v24H0Z M8 80h4v4H8Z"/>
+      <path d="M20 20h4v4h-4z M12 48h8v8h-8z M24 76h4v4h-4z M16 104h4v4h-4z"/>
+    </pattern>
+    <!-- Isolated holes reveal the actual desert through the dissolving corners. -->
+    <g id="burst">
+      <path fill-rule="evenodd" d="M0 0h124v8h-20v8H84v8H68v12H48v12H32v16H20v16H8v12H0Z
+        M20 44h8v8h-8Z M36 20h12v12H36Z M64 12h8v8h-8Z M88 4h4v4h-4Z"/>
+      <path d="M52 40h12v12H52z M76 28h8v8h-8z M92 20h4v4h-4z M36 56h8v8h-8z M20 72h4v4h-4z"/>
+    </g>
+  </defs>
+
+  <rect width="100%" height="36" fill="url(#rim)"/>
+  <rect width="28" height="100%" fill="url(#side)"/>
+  <svg x="100%" y="100%" overflow="visible">
+    <g transform="scale(-1 -1)">
+      <rect width="100%" height="36" fill="url(#rim)"/>
+      <rect width="28" height="100%" fill="url(#side)"/>
+    </g>
+  </svg>
+
+  <use href="#burst"/>
+  <svg x="100%" overflow="visible"><use href="#burst" transform="scale(-.75 .75)"/></svg>
+  <svg y="100%" overflow="visible"><use href="#burst" transform="scale(.75 -.75)"/></svg>
+  <svg x="100%" y="100%" overflow="visible"><use href="#burst" transform="scale(-1 -1)"/></svg>
+</svg>
