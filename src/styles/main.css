@@ -960,19 +960,23 @@ button {
 }
 
 .guess-pedal-card {
+    --art-pixel: 2px;
     position: relative;
     isolation: isolate;
     grid-column: 1 / -1;
     display: grid;
-    align-content: center;
+    align-content: start;
     justify-items: start;
-    gap: .9rem;
+    gap: 1rem;
+    width: round(down, 100%, var(--art-pixel));
     min-height: 21rem;
-    padding: 3.5rem 8%;
+    padding: 4rem 48px;
+    padding-inline: round(down, 8%, var(--art-pixel));
     color: #fff6dc;
 }
 
 .guess-pedal-track,
+.guess-pedal-fragments,
 .guess-pedal-card::before,
 .guess-pedal-card::after {
     position: absolute;
@@ -980,10 +984,13 @@ button {
     pointer-events: none;
 }
 
+/* The panorama, racer and wordmark all use the same fixed integer zoom. */
 .guess-pedal-track {
     z-index: -2;
     background: linear-gradient(175deg, #f45b31dc 6%, #fd903bda 43%, #df492bd6 80%, #a93324de),
-        #cf4b28 url('/images/guess-pedal/garage-sunset.webp') 75% bottom / cover no-repeat;
+        #cf4b28 url('/images/guess-pedal/garage-sunset.webp') 75% bottom /
+        calc(704 * var(--art-pixel)) calc(189 * var(--art-pixel)) no-repeat;
+    background-position: center, round(down, 75%, var(--art-pixel)) bottom;
     background-blend-mode: hard-light;
     image-rendering: pixelated;
 }
@@ -992,19 +999,22 @@ button {
     content: '';
     position: absolute;
     inset: auto 0 0;
-    height: 17%;
+    height: 56px;
+    height: round(down, 17%, var(--art-pixel));
     border-top: 4px solid #f19b5f;
-    background: repeating-linear-gradient(90deg, #ed9463 0 25px, transparent 25px 78px) 0 37% / 100% 3px no-repeat, #77392b;
+    background: repeating-linear-gradient(90deg, #ed9463 0 24px, transparent 24px 76px) 0 16px / 100% 2px no-repeat, #77392b;
 }
 
 .guess-pedal-track::after {
     content: '';
     position: absolute;
     right: 23%;
-    bottom: 13%;
-    width: 112px;
-    height: 72px;
-    background: url('/images/guess-pedal/v7-car-still.png') center / contain no-repeat;
+    bottom: 44px;
+    right: round(down, 23%, var(--art-pixel));
+    bottom: round(down, 13%, var(--art-pixel));
+    width: calc(56 * var(--art-pixel));
+    height: calc(36 * var(--art-pixel));
+    background: url('/images/guess-pedal/v7-car-still.png') center / 100% 100% no-repeat;
 }
 
 .guess-pedal-card::before {
@@ -1015,168 +1025,91 @@ button {
 
 .guess-pedal-card::after {
     content: '';
+    height: round(up, 100%, var(--art-pixel));
     background: url('../assets/guess-pedal-pixels.svg') center / 100% 100% no-repeat;
 }
 
 .guess-pedal-fragments {
-    position: absolute;
-    inset: 0;
     z-index: 1;
-    pointer-events: none;
-}
-
-.guess-pedal-fragments::before,
-.guess-pedal-fragments::after {
-    content: '';
-    position: absolute;
-    width: 8px;
-    height: 8px;
-}
-
-.guess-pedal-fragments::before {
-    top: 50px;
-    right: 74px;
-    width: 16px;
-    background: var(--bg-primary);
-    box-shadow: 8px 4px var(--bg-primary), 8px 7px #d49a69, 0 3px #d49a69;
-}
-
-.guess-pedal-fragments::after {
-    left: 51px;
-    bottom: 52px;
-    background: var(--bg-primary);
-    box-shadow: 8px -4px var(--bg-primary), 8px -1px #d49a69, 0 3px #d49a69;
+    height: round(up, 100%, var(--art-pixel));
 }
 
 .guess-pedal-ember {
     position: absolute;
-    --lift: -44px;
-}
-
-.guess-pedal-ember[data-seam="upper-left"] {
-    top: 39px;
-    left: 57px;
-    --drift: -29px;
-    --phase: -1.3s;
-    --cycle: 5.6s;
-}
-
-.guess-pedal-ember[data-seam="top"] {
-    top: 22px;
-    left: calc(41% + 10px);
-    --drift: 20px;
-    --lift: -36px;
-    --phase: -3s;
-    --cycle: 6.3s;
+    width: 4px;
+    height: var(--art-pixel);
+    color: #c77d4d;
+    background: currentColor;
 }
 
 .guess-pedal-ember[data-seam="upper-right"] {
-    top: 52px;
-    right: 72px;
-    --drift: 34px;
-    --lift: -58px;
-    --phase: -4.7s;
-    --cycle: 5.1s;
+    top: 22px;
+    right: 40px;
+    --step: var(--art-pixel);
+    --phase: -.8s;
+    --cycle: 5.6s;
 }
 
 .guess-pedal-ember[data-seam="lower-left"] {
-    bottom: 48px;
-    left: 43px;
-    --drift: -34px;
-    --phase: -2.3s;
-    --cycle: 6.6s;
+    bottom: 22px;
+    left: 40px;
+    --step: calc(-1 * var(--art-pixel));
+    --phase: -3.3s;
+    --cycle: 6.2s;
 }
 
-.guess-pedal-ember[data-seam="lower-right"] {
-    bottom: 35px;
-    right: 48px;
-    --drift: 30px;
-    --phase: -.4s;
-    --cycle: 5.9s;
-}
-
+/* Draw each movement frame on the same grid as the seam. Burnout sheds one cell. */
 @keyframes guess-pedal-flake {
-    0%, 9% {
-        opacity: 0;
-        transform: translate(0, 0);
-    }
-    15% {
-        opacity: 1;
-        background: #fff0c2;
-        transform: translate(0, 0);
-    }
-    29% {
-        background: #ffad43;
-        transform: translate(calc(var(--travel) * .32), -7px);
-    }
-    45% {
-        opacity: 1;
-        background: #ed602e;
-        transform: translate(calc(var(--travel) * .52), calc(var(--lift) * .52)) scale(.8);
-    }
-    65%, 100% {
-        opacity: 0;
-        background: #953e30;
-        transform: translate(var(--travel), var(--lift)) scale(.3);
-    }
+    0%, 8% { opacity: 0; transform: translate(0, 0); }
+    12% { opacity: 1; background: #ffe5a4; transform: translate(0, 0); }
+    19% { transform: translate(var(--step), -2px); }
+    25% { transform: translate(var(--step), -4px); }
+    32% { background: #ffad43; transform: translate(calc(2 * var(--step)), -6px); }
+    39% { transform: translate(calc(3 * var(--step)), -8px); }
+    46% { box-shadow: none; background: #ed602e; transform: translate(calc(3 * var(--step)), -12px); }
+    53% { opacity: .75; transform: translate(calc(4 * var(--step)), -16px); }
+    60% { opacity: .45; background: #a3442c; transform: translate(calc(5 * var(--step)), -20px); }
+    67%, 100% { opacity: 0; }
 }
 
 @keyframes guess-pedal-singe {
-    0%, 52%, 100% { color: transparent; }
-    15% { color: #ffbf58; }
-    27% { color: #ef7136; }
-    40% { color: #9b3f2880; }
+    0%, 48%, 100% { color: #c77d4d; }
+    12% { color: #ffbd59; }
+    24% { color: #ef7136; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
     .guess-pedal-ember {
-        width: 8px;
-        height: 4px;
-        color: transparent;
-        background: currentColor;
-        box-shadow: -4px 2px currentColor, 5px -2px currentColor;
         animation: guess-pedal-singe var(--cycle) linear var(--phase) infinite;
+    }
+
+    .guess-pedal-card:is(:hover, :focus-within) .guess-pedal-ember {
+        transform: translate(var(--step), -2px);
     }
 
     .guess-pedal-ember::before,
     .guess-pedal-ember::after {
         content: '';
         position: absolute;
-        width: 8px;
-        height: 8px;
+        width: var(--art-pixel);
+        height: var(--art-pixel);
         opacity: 0;
-        --travel: var(--drift);
-        box-shadow: -2px 2px #bd512f, 2px -2px #ffc763;
-        animation: guess-pedal-flake var(--cycle) steps(7, end) var(--phase) infinite;
+        background: #ffe5a4;
+        animation: guess-pedal-flake var(--cycle) step-end var(--phase) infinite;
+    }
+
+    .guess-pedal-ember::before {
+        box-shadow: var(--step) 0 #ffb64d, 0 2px #bd512f;
     }
 
     .guess-pedal-ember::after {
-        left: 4px;
-        top: 2px;
-        width: 4px;
-        height: 4px;
-        --travel: calc(var(--drift) * .65);
-        --lift: -31px;
-        box-shadow: 0 1px #b74a26;
-        animation-delay: calc(var(--phase) + .42s);
-    }
-
-    .guess-pedal-fragments::before,
-    .guess-pedal-fragments::after {
-        transition: transform 240ms steps(3, end);
-    }
-
-    .guess-pedal-card:is(:hover, :focus-within) .guess-pedal-fragments::before {
-        transform: translate(-8px, 8px);
-    }
-
-    .guess-pedal-card:is(:hover, :focus-within) .guess-pedal-fragments::after {
-        transform: translate(8px, -6px);
+        left: var(--step);
+        animation-delay: calc(var(--phase) + .45s);
     }
 }
 
 .guess-pedal-title {
-    width: min(100%, 18rem);
+    width: calc(77 * var(--art-pixel));
     margin: 0;
 }
 
@@ -1221,52 +1154,33 @@ button {
 
 @media (max-width: 640px) {
     .guess-pedal-card {
+        --gutter: 28px;
         align-content: stretch;
-        grid-template: auto minmax(6rem, 1fr) auto auto / minmax(0, 1fr);
-        padding: 3.75rem 9%;
+        grid-template: auto minmax(6rem, 1fr) auto auto / var(--gutter) minmax(0, 1fr) var(--gutter);
+        grid-template-columns: round(down, 9%, var(--art-pixel)) minmax(0, 1fr) round(down, 9%, var(--art-pixel));
+        padding: 3.5rem 0;
+        column-gap: 0;
         min-height: 25rem;
         background: linear-gradient(#65251d 50%, #491c16);
     }
 
-    .guess-pedal-title {
-        grid-area: 1 / 1;
-    }
-
-    .guess-pedal-card .project-description {
-        grid-row: 3;
-    }
-
-    .guess-pedal-play {
-        grid-row: 4;
-        align-self: start;
-    }
+    .guess-pedal-title { grid-area: 1 / 2; }
+    .guess-pedal-card .project-description { grid-area: 3 / 2; }
+    .guess-pedal-play { grid-area: 4 / 2; align-self: start; }
 
     .guess-pedal-track {
         position: relative;
-        grid-area: 1 / 1 / 3 / 2;
+        grid-area: 1 / 1 / 3 / -1;
         justify-self: stretch;
-        margin: -3.75rem -11% 0;
-        background-position: 78% bottom;
+        margin-top: -3.5rem;
+        background-position: center, 78% 52%;
+        background-position: center, round(down, 78%, var(--art-pixel)) round(down, 52%, var(--art-pixel));
     }
 
     .guess-pedal-track::after {
         right: 16%;
+        right: round(down, 16%, var(--art-pixel));
     }
-
-    .guess-pedal-fragments::before {
-        top: 32px;
-        right: 46px;
-    }
-
-    .guess-pedal-fragments::after {
-        left: 32px;
-        bottom: 32px;
-    }
-
-    .guess-pedal-ember[data-seam="upper-left"] { top: 25px; left: 35px; }
-    .guess-pedal-ember[data-seam="upper-right"] { top: 33px; right: 45px; }
-    .guess-pedal-ember[data-seam="lower-left"] { bottom: 30px; left: 23px; }
-    .guess-pedal-ember[data-seam="lower-right"] { bottom: 22px; right: 30px; }
 
     .guess-pedal-card::before {
         background: linear-gradient(#65251de8, transparent 35%);

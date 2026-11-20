@@ -1,80 +1,47 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="#fffdf7" shape-rendering="crispEdges">
-  <style>
-    @media (max-width: 600px) {
-      #corner, #corner-split, #slant-split { transform: scale(.625); }
-    }
-  </style>
   <defs>
-    <!-- Fixed-size tiles keep the ledges and fractures square as the panel resizes. -->
-    <pattern id="ledge" width="344" height="48" patternUnits="userSpaceOnUse">
-      <path d="M0 0H344V20H312V24H292V28H260V24H232V16H208V12H184V16H168V20H148V28H124V32H96V28H76V24H56V16H28V20H0Z"/>
-      <path d="M56 24h8v8h-8z M156 28h4v4h-4z M276 32h8v4h-8z"/>
+    <!-- Each unit of artwork is one logical pixel, displayed at exactly 2 CSS pixels. -->
+    <pattern id="ledge" width="216" height="28" patternUnits="userSpaceOnUse">
+      <path transform="scale(2)" d="M0 0h108v7H93V6H82v2H61v2H48V9H30V7H18V6H0Z M56 11h2v1h-2z"/>
     </pattern>
-    <pattern id="side" width="36" height="164" patternUnits="userSpaceOnUse">
-      <path d="M0 0H12V20H16V36H20V52H16V72H8V92H12V104H20V120H24V136H16V148H12V164H0Z"/>
-      <path d="M24 50h4v4h-4z M16 88h4v4h-4z"/>
+    <pattern id="side" width="20" height="112" patternUnits="userSpaceOnUse">
+      <path transform="scale(2)" d="M0 0h6v12h2v9H6v8H5v12h2v9H6v6H0Z"/>
     </pattern>
-
-    <g id="corner">
-      <path d="M0 0H156V12H132V20H116V24H104V32H88V40H76V48H60V56H52V64H36V72H28V84H16V100H0Z"/>
-      <path d="M78 46h12v4h8v8H86v-4h-8z M36 77h8v8h-8z M105 43h4v4h-4z"/>
+    <g id="corner" transform="scale(2)">
+      <path d="M0 0h40v4h-6v2h-5v2h-5v2h-4v2h-4v2h-3v3h-3v3H7v4H4v4H0Z"/>
+      <path d="M23 12h2v1h-2z"/>
     </g>
-
-    <!-- Cut through the paper and its underside together so the sunset shows in the seams. -->
-    <g id="corner-split" fill="none" stroke="black" stroke-linecap="square">
-      <path stroke-width="8" d="M74 56H66V50H58V44H50V38"/>
-      <path stroke-width="4" d="M50 40V34H42V28H34V22H24V16H18V12H12"/>
-      <path stroke-width="2" d="M12 12H8V8H2 M34 24V16H38V10H34V4"/>
-      <path stroke-width="4" d="M58 44V34H64V26H72V22H80V16"/>
-      <path stroke-width="2" d="M80 16H88V12H98V8H106 M72 22V14H68V8"/>
-      <path stroke-width="4" d="M50 38H40V42H32V46H20"/>
-      <path stroke-width="2" d="M20 46H14V52H4"/>
-      <path stroke-width="6" d="M66 50H76V46H88V38H100"/>
+    <!-- Only two lips split. Each seam is a few connected cells cut into the rim. -->
+    <g id="notch" transform="scale(2)" fill="black">
+      <path d="M23 12h-4v-1h-3V9h-2V8h-3V7H9V6H7V5h3v1h2v1h3v1h2v1h2v1h4z"/>
+      <path d="M18 10V8h1V6h2V5h2v1h-1v1h-2v3z"/>
     </g>
-    <g id="slant-split" fill="none" stroke="black" stroke-linecap="square">
-      <path stroke-width="6" d="M80 48H68V42H58V38H48"/>
-      <path stroke-width="4" d="M48 38H38V32H32V26H22V22H16"/>
-      <path stroke-width="2" d="M16 22H10V18H4 M32 26V18H28V12H22"/>
-      <path stroke-width="4" d="M58 38V30H64V24H70"/>
-      <path stroke-width="2" d="M70 24H78V18H88V14 M64 24V16H60"/>
-    </g>
-    <filter id="paper-depth" filterUnits="userSpaceOnUse" x="0" y="0" width="100%" height="100%">
-      <feOffset in="SourceAlpha" dy="3" result="underside"/>
+    <mask id="cracks" maskUnits="userSpaceOnUse" x="0" y="0" width="100%" height="100%">
+      <rect width="100%" height="100%" fill="white"/>
+      <svg x="100%" overflow="visible"><use href="#notch" transform="scale(-1 1)"/></svg>
+      <svg y="100%" overflow="visible"><use href="#notch" transform="scale(1 -1)"/></svg>
+    </mask>
+    <filter id="depth" filterUnits="userSpaceOnUse" x="0" y="0" width="100%" height="100%">
+      <feOffset in="SourceAlpha" dy="2" result="lip"/>
       <feFlood flood-color="#bd8b60"/>
-      <feComposite in2="underside" operator="in"/>
+      <feComposite in2="lip" operator="in"/>
       <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <g id="edge-split" fill="none" stroke="black" stroke-linecap="square">
-      <path stroke-width="6" d="M0 36V28H8V22H14"/>
-      <path stroke-width="4" d="M14 22H20V16H30V12H40"/>
-      <path stroke-width="2" d="M40 12V8H50V4H56 M30 12V8H24V4"/>
-      <path stroke-width="2" d="M8 24H0V18H-10V14H-20"/>
-    </g>
-    <mask id="fractures" maskUnits="userSpaceOnUse" x="0" y="0" width="100%" height="100%">
-      <rect width="100%" height="100%" fill="white"/>
-      <use href="#slant-split"/>
-      <svg x="100%" overflow="visible"><use href="#corner-split" transform="scale(-1.2 1.2)"/></svg>
-      <svg x="41%" overflow="visible"><use href="#edge-split"/></svg>
-      <svg x="76%" y="100%" overflow="visible"><use href="#edge-split" transform="scale(-1 -1)"/></svg>
-      <svg y="100%" overflow="visible"><use href="#corner-split" transform="scale(1 -1)"/></svg>
-      <svg x="100%" y="100%" overflow="visible"><use href="#slant-split" transform="scale(-.75 -.75)"/></svg>
-    </mask>
   </defs>
-
-  <g mask="url(#fractures)">
-    <g filter="url(#paper-depth)">
-      <rect width="100%" height="40" fill="url(#ledge)"/>
-      <rect width="28" height="100%" fill="url(#side)"/>
+  <g mask="url(#cracks)">
+    <g filter="url(#depth)">
+      <rect width="100%" height="28" fill="url(#ledge)"/>
+      <rect width="20" height="100%" fill="url(#side)"/>
       <svg x="100%" y="100%" overflow="visible">
         <g transform="scale(-1 -1)">
-          <rect width="100%" height="40" fill="url(#ledge)"/>
-          <rect width="28" height="100%" fill="url(#side)"/>
+          <rect width="100%" height="28" fill="url(#ledge)"/>
+          <rect width="20" height="100%" fill="url(#side)"/>
         </g>
       </svg>
       <use href="#corner"/>
-      <svg x="100%" overflow="visible"><use href="#corner" transform="scale(-1.2 1.2)"/></svg>
+      <svg x="100%" overflow="visible"><use href="#corner" transform="scale(-1 1)"/></svg>
       <svg y="100%" overflow="visible"><use href="#corner" transform="scale(1 -1)"/></svg>
-      <svg x="100%" y="100%" overflow="visible"><use href="#corner" transform="scale(-.75 -.75)"/></svg>
+      <svg x="100%" y="100%" overflow="visible"><use href="#corner" transform="scale(-1 -1)"/></svg>
     </g>
   </g>
 </svg>

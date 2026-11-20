@@ -114,12 +114,12 @@ export default function Projects() {
                         <article key={project.title} className="guess-pedal-card">
                             <div className="guess-pedal-track" aria-hidden="true" />
                             <span className="guess-pedal-fragments" aria-hidden="true">
-                                {['upper-left', 'top', 'upper-right', 'lower-left', 'lower-right'].map(seam => (
+                                {['upper-right', 'lower-left'].map(seam => (
                                     <span key={seam} className="guess-pedal-ember" data-seam={seam} />
                                 ))}
                             </span>
                             <h3 className="guess-pedal-title">
-                                <img src="/images/guess-pedal/sunset-logo.svg" alt={project.title} width="308" height="56" />
+                                <img src="/images/guess-pedal/sunset-logo.svg" alt={project.title} width="154" height="28" />
                             </h3>
                             <p className="project-description">{project.description}</p>
                             <a className="guess-pedal-play" href={project.playUrl}>Play Guess Pedal</a>
