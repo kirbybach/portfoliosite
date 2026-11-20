@@ -16,7 +16,18 @@ interface Project {
     demo?: string
 }
 
-const projects: Project[] = [
+interface GuessPedalProject {
+    title: string
+    description: string
+    playUrl: string
+}
+
+const projects: (Project | GuessPedalProject)[] = [
+    {
+        title: 'Guess Pedal',
+        description: 'A 60-second daily trivia race. Estimate a number or guess a word. The closer you get, the farther you ride.',
+        playUrl: 'https://guesspedal.com/',
+    },
     {
         title: 'WorkflowyCLI',
         description: 'High-performance CLI for Workflowy in TypeScript featuring a custom interactive REPL with Unix-style commands (ls, cd, tree) and an optimistic state sync engine that eliminates API latency.',
@@ -99,7 +110,16 @@ export default function Projects() {
             <div className="container">
                 <h2 className="section-title"><span className="gradient-text">Featured Projects</span></h2>
                 <div className="projects-grid" id="projects-grid">
-                    {visibleProjects.map((project) => (
+                    {visibleProjects.map((project) => 'playUrl' in project ? (
+                        <article key={project.title} className="project-card glass-card guess-pedal-card">
+                            <h3 className="guess-pedal-title">
+                                <img src="/images/guess-pedal/v8-logo.svg" alt={project.title} width="231" height="42" />
+                            </h3>
+                            <div className="guess-pedal-track" aria-hidden="true" />
+                            <p className="project-description">{project.description}</p>
+                            <a className="guess-pedal-play" href={project.playUrl}>Play Guess Pedal</a>
+                        </article>
+                    ) : (
                         <article
                             key={project.title}
                             className={`project-card glass-card ${project.featured ? 'featured' : ''}`}

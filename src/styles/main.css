@@ -959,6 +959,87 @@ button {
     margin-top: auto;
 }
 
+.guess-pedal-card {
+    gap: 1rem;
+    padding: 1.5rem;
+    border-color: #24192d;
+    background: #302339;
+    color: #fff1d1;
+}
+
+.guess-pedal-title {
+    margin: 0;
+}
+
+.guess-pedal-track {
+    position: relative;
+    flex: 1 0 7.5rem;
+    overflow: hidden;
+    border: 2px solid #17101f;
+    border-radius: 3px;
+    background: #724456 url('/images/guess-pedal/v6-hoodoos.webp') center 65% / cover;
+    image-rendering: pixelated;
+}
+
+.guess-pedal-track::before {
+    content: '';
+    position: absolute;
+    inset: auto 0 0;
+    height: 1.35rem;
+    border-top: 3px solid #df937b;
+    background: repeating-linear-gradient(90deg, #d5a2a0 0 15px, transparent 15px 47px) 0 78% / 100% 2px no-repeat, #432f4a;
+}
+
+.guess-pedal-track::after {
+    content: '';
+    position: absolute;
+    left: 10%;
+    bottom: 0;
+    width: 112px;
+    height: 72px;
+    background: url('/images/guess-pedal/v7-car-still.png') center / contain no-repeat;
+}
+
+.guess-pedal-card .project-description {
+    flex-grow: 0;
+    margin: 0;
+    color: #fff1d1;
+    font: 500 1rem/1.55 system-ui, sans-serif;
+}
+
+.guess-pedal-play {
+    display: inline-flex;
+    align-self: flex-start;
+    align-items: center;
+    gap: .65rem;
+    min-height: 44px;
+    padding: .55rem .95rem;
+    border: 1px solid #17101f;
+    border-radius: 4px;
+    background: #ddff7b;
+    color: #20281a;
+    box-shadow: inset 0 2px #f5ffc5, 0 3px #71843f;
+    font: 750 1rem/1.25 system-ui, sans-serif;
+}
+
+.guess-pedal-play::before {
+    content: '';
+    width: 16px;
+    height: 12px;
+    background: repeating-conic-gradient(currentColor 0 25%, transparent 0 50%) 0 0 / 8px 8px;
+}
+
+.guess-pedal-play:hover {
+    background: #e7ff9e;
+    color: #20281a;
+    border-color: #17101f;
+}
+
+.guess-pedal-play:focus-visible {
+    outline: 3px solid #fff1d1;
+    outline-offset: 4px;
+}
+
 .tech-tag {
     padding: 0.25rem 0.6rem;
     background: var(--bg-secondary);
