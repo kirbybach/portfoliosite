@@ -1034,17 +1034,18 @@ button {
 }
 
 .guess-pedal-fragments::before {
-    top: 12px;
-    right: 28px;
-    background: #e86639;
-    box-shadow: 14px -8px 0 -2px #ff9c51, 22px 12px 0 -1px #b74332;
+    top: 50px;
+    right: 74px;
+    width: 16px;
+    background: var(--bg-primary);
+    box-shadow: 8px 4px var(--bg-primary), 8px 7px #d49a69, 0 3px #d49a69;
 }
 
 .guess-pedal-fragments::after {
-    left: 20px;
-    bottom: 16px;
-    background: #743324;
-    box-shadow: -12px -14px 0 -1px #ae5230, 12px 10px 0 -2px #9e4129;
+    left: 51px;
+    bottom: 52px;
+    background: var(--bg-primary);
+    box-shadow: 8px -4px var(--bg-primary), 8px -1px #d49a69, 0 3px #d49a69;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -1054,11 +1055,11 @@ button {
     }
 
     .guess-pedal-card:is(:hover, :focus-within) .guess-pedal-fragments::before {
-        transform: translate(9px, -9px);
+        transform: translate(-8px, 8px);
     }
 
     .guess-pedal-card:is(:hover, :focus-within) .guess-pedal-fragments::after {
-        transform: translate(-9px, 6px);
+        transform: translate(8px, -6px);
     }
 }
 
@@ -1138,6 +1139,16 @@ button {
 
     .guess-pedal-track::after {
         right: 16%;
+    }
+
+    .guess-pedal-fragments::before {
+        top: 32px;
+        right: 46px;
+    }
+
+    .guess-pedal-fragments::after {
+        left: 32px;
+        bottom: 32px;
     }
 
     .guess-pedal-card::before {
