@@ -960,7 +960,7 @@ button {
 }
 
 .guess-pedal-card {
-    --art-pixel: 2px;
+    --art-pixel: 3px;
     position: relative;
     isolation: isolate;
     grid-column: 1 / -1;
@@ -976,7 +976,6 @@ button {
 }
 
 .guess-pedal-track,
-.guess-pedal-fragments,
 .guess-pedal-card::before,
 .guess-pedal-card::after {
     position: absolute;
@@ -1001,8 +1000,8 @@ button {
     inset: auto 0 0;
     height: 56px;
     height: round(down, 17%, var(--art-pixel));
-    border-top: 4px solid #f19b5f;
-    background: repeating-linear-gradient(90deg, #ed9463 0 24px, transparent 24px 76px) 0 16px / 100% 2px no-repeat, #77392b;
+    border-top: var(--art-pixel) solid #f19b5f;
+    background: repeating-linear-gradient(90deg, #ed9463 0 24px, transparent 24px 75px) 0 15px / 100% var(--art-pixel) no-repeat, #77392b;
 }
 
 .guess-pedal-track::after {
@@ -1029,84 +1028,13 @@ button {
     background: url('../assets/guess-pedal-pixels.svg') center / 100% 100% no-repeat;
 }
 
-.guess-pedal-fragments {
-    z-index: 1;
-    height: round(up, 100%, var(--art-pixel));
-}
-
-.guess-pedal-ember {
-    position: absolute;
-    width: 4px;
-    height: var(--art-pixel);
-    color: #c77d4d;
-    background: currentColor;
-}
-
-.guess-pedal-ember[data-seam="upper-right"] {
-    top: 22px;
-    right: 40px;
-    --step: var(--art-pixel);
-    --phase: -.8s;
-    --cycle: 5.6s;
-}
-
-.guess-pedal-ember[data-seam="lower-left"] {
-    bottom: 22px;
-    left: 40px;
-    --step: calc(-1 * var(--art-pixel));
-    --phase: -3.3s;
-    --cycle: 6.2s;
-}
-
-/* Draw each movement frame on the same grid as the seam. Burnout sheds one cell. */
-@keyframes guess-pedal-flake {
-    0%, 8% { opacity: 0; transform: translate(0, 0); }
-    12% { opacity: 1; background: #ffe5a4; transform: translate(0, 0); }
-    19% { transform: translate(var(--step), -2px); }
-    25% { transform: translate(var(--step), -4px); }
-    32% { background: #ffad43; transform: translate(calc(2 * var(--step)), -6px); }
-    39% { transform: translate(calc(3 * var(--step)), -8px); }
-    46% { box-shadow: none; background: #ed602e; transform: translate(calc(3 * var(--step)), -12px); }
-    53% { opacity: .75; transform: translate(calc(4 * var(--step)), -16px); }
-    60% { opacity: .45; background: #a3442c; transform: translate(calc(5 * var(--step)), -20px); }
-    67%, 100% { opacity: 0; }
-}
-
-@keyframes guess-pedal-singe {
-    0%, 48%, 100% { color: #c77d4d; }
-    12% { color: #ffbd59; }
-    24% { color: #ef7136; }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .guess-pedal-ember {
-        animation: guess-pedal-singe var(--cycle) linear var(--phase) infinite;
-    }
-
-    .guess-pedal-ember::before,
-    .guess-pedal-ember::after {
-        content: '';
-        position: absolute;
-        width: var(--art-pixel);
-        height: var(--art-pixel);
-        opacity: 0;
-        background: #ffe5a4;
-        animation: guess-pedal-flake var(--cycle) step-end var(--phase) infinite;
-    }
-
-    .guess-pedal-ember::before {
-        box-shadow: var(--step) 0 #ffb64d, 0 2px #bd512f;
-    }
-
-    .guess-pedal-ember::after {
-        left: var(--step);
-        animation-delay: calc(var(--phase) + .45s);
-    }
-}
-
 .guess-pedal-title {
     width: calc(77 * var(--art-pixel));
     margin: 0;
+}
+
+.guess-pedal-title img {
+    width: 100%;
 }
 
 .guess-pedal-card .project-description {
@@ -1132,9 +1060,9 @@ button {
 
 .guess-pedal-play::before {
     content: '';
-    width: 16px;
+    width: 15px;
     height: 12px;
-    background: repeating-conic-gradient(currentColor 0 25%, transparent 0 50%) 0 0 / 8px 8px;
+    background: repeating-conic-gradient(currentColor 0 25%, transparent 0 50%) 0 0 / 6px 6px;
 }
 
 .guess-pedal-play:hover {
@@ -1150,17 +1078,22 @@ button {
 
 @media (max-width: 640px) {
     .guess-pedal-card {
-        --gutter: 28px;
+        --gutter: max(36px, 9%);
         align-content: stretch;
-        grid-template: auto minmax(6rem, 1fr) auto auto / var(--gutter) minmax(0, 1fr) var(--gutter);
-        grid-template-columns: round(down, 9%, var(--art-pixel)) minmax(0, 1fr) round(down, 9%, var(--art-pixel));
+        grid-template: auto minmax(7.25rem, 1fr) auto auto / var(--gutter) minmax(0, 1fr) var(--gutter);
+        grid-template-columns: round(down, var(--gutter), var(--art-pixel)) minmax(0, 1fr) round(down, var(--gutter), var(--art-pixel));
         padding: 3.5rem 0;
         column-gap: 0;
         min-height: 25rem;
         background: linear-gradient(#65251d 50%, #491c16);
     }
 
-    .guess-pedal-title { grid-area: 1 / 2; }
+    .guess-pedal-title {
+        --title-inset: min(var(--gutter), calc((100% - 77 * var(--art-pixel)) / 2));
+        grid-area: 1 / 1 / 2 / -1;
+        margin-inline-start: var(--title-inset);
+        margin-inline-start: round(down, var(--title-inset), var(--art-pixel));
+    }
     .guess-pedal-card .project-description { grid-area: 3 / 2; }
     .guess-pedal-play { grid-area: 4 / 2; align-self: start; }
 
