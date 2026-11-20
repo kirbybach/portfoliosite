@@ -111,11 +111,11 @@ export default function Projects() {
                 <h2 className="section-title"><span className="gradient-text">Featured Projects</span></h2>
                 <div className="projects-grid" id="projects-grid">
                     {visibleProjects.map((project) => 'playUrl' in project ? (
-                        <article key={project.title} className="project-card glass-card guess-pedal-card">
-                            <h3 className="guess-pedal-title">
-                                <img src="/images/guess-pedal/v8-logo.svg" alt={project.title} width="231" height="42" />
-                            </h3>
+                        <article key={project.title} className="guess-pedal-card">
                             <div className="guess-pedal-track" aria-hidden="true" />
+                            <h3 className="guess-pedal-title">
+                                <img src="/images/guess-pedal/sunset-logo.svg" alt={project.title} width="308" height="56" />
+                            </h3>
                             <p className="project-description">{project.description}</p>
                             <a className="guess-pedal-play" href={project.playUrl}>Play Guess Pedal</a>
                         </article>

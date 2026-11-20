@@ -960,24 +960,31 @@ button {
 }
 
 .guess-pedal-card {
-    gap: 1rem;
-    padding: 1.5rem;
-    border-color: #24192d;
-    background: #302339;
-    color: #fff1d1;
+    position: relative;
+    isolation: isolate;
+    grid-column: 1 / -1;
+    display: grid;
+    align-content: center;
+    justify-items: start;
+    gap: .9rem;
+    min-height: 21rem;
+    padding: 3.5rem 8%;
+    color: #fff6dc;
 }
 
-.guess-pedal-title {
-    margin: 0;
+.guess-pedal-track,
+.guess-pedal-card::before,
+.guess-pedal-card::after {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
 }
 
 .guess-pedal-track {
-    position: relative;
-    flex: 1 0 7.5rem;
-    overflow: hidden;
-    border: 2px solid #17101f;
-    border-radius: 3px;
-    background: #724456 url('/images/guess-pedal/v6-hoodoos.webp') center 65% / cover;
+    z-index: -2;
+    background: linear-gradient(175deg, #f45b31dc 6%, #fd903bda 43%, #df492bd6 80%, #a93324de),
+        #cf4b28 url('/images/guess-pedal/garage-sunset.webp') 75% bottom / cover no-repeat;
+    background-blend-mode: hard-light;
     image-rendering: pixelated;
 }
 
@@ -985,40 +992,55 @@ button {
     content: '';
     position: absolute;
     inset: auto 0 0;
-    height: 1.35rem;
-    border-top: 3px solid #df937b;
-    background: repeating-linear-gradient(90deg, #d5a2a0 0 15px, transparent 15px 47px) 0 78% / 100% 2px no-repeat, #432f4a;
+    height: 17%;
+    border-top: 4px solid #f19b5f;
+    background: repeating-linear-gradient(90deg, #ed9463 0 25px, transparent 25px 78px) 0 37% / 100% 3px no-repeat, #77392b;
 }
 
 .guess-pedal-track::after {
     content: '';
     position: absolute;
-    left: 10%;
-    bottom: 0;
+    right: 23%;
+    bottom: 13%;
     width: 112px;
     height: 72px;
     background: url('/images/guess-pedal/v7-car-still.png') center / contain no-repeat;
 }
 
-.guess-pedal-card .project-description {
-    flex-grow: 0;
+.guess-pedal-card::before {
+    content: '';
+    z-index: -1;
+    background: linear-gradient(95deg, #481611 4%, #571a14f5 26%, #652119eb 36%, #792a1b63 53%, transparent 68%);
+}
+
+.guess-pedal-card::after {
+    content: '';
+    background: url('../assets/guess-pedal-paper.svg') center / 100% 100% no-repeat;
+}
+
+.guess-pedal-title {
+    width: min(100%, 18rem);
     margin: 0;
-    color: #fff1d1;
-    font: 500 1rem/1.55 system-ui, sans-serif;
+}
+
+.guess-pedal-card .project-description {
+    max-width: 30ch;
+    margin: 0;
+    color: #fff6dc;
+    font: 500 1rem/1.5 system-ui, sans-serif;
 }
 
 .guess-pedal-play {
     display: inline-flex;
-    align-self: flex-start;
     align-items: center;
     gap: .65rem;
     min-height: 44px;
     padding: .55rem .95rem;
-    border: 1px solid #17101f;
-    border-radius: 4px;
-    background: #ddff7b;
-    color: #20281a;
-    box-shadow: inset 0 2px #f5ffc5, 0 3px #71843f;
+    border: 2px solid #4f1d17;
+    border-radius: 3px;
+    background: #ffb269;
+    color: #3f180f;
+    box-shadow: inset 0 2px #ffdaa0, 0 3px #973f24;
     font: 750 1rem/1.25 system-ui, sans-serif;
 }
 
@@ -1030,14 +1052,53 @@ button {
 }
 
 .guess-pedal-play:hover {
-    background: #e7ff9e;
-    color: #20281a;
-    border-color: #17101f;
+    background: #ffcb8f;
+    color: #3f180f;
+    border-color: #4f1d17;
 }
 
 .guess-pedal-play:focus-visible {
-    outline: 3px solid #fff1d1;
+    outline: 3px solid #fff6dc;
     outline-offset: 4px;
+}
+
+@media (max-width: 640px) {
+    .guess-pedal-card {
+        align-content: stretch;
+        grid-template: auto minmax(6rem, 1fr) auto auto / minmax(0, 1fr);
+        padding: 3rem 9%;
+        min-height: 25rem;
+        background: linear-gradient(#65251d 50%, #491c16);
+    }
+
+    .guess-pedal-title {
+        grid-area: 1 / 1;
+    }
+
+    .guess-pedal-card .project-description {
+        grid-row: 3;
+    }
+
+    .guess-pedal-play {
+        grid-row: 4;
+        align-self: start;
+    }
+
+    .guess-pedal-track {
+        position: relative;
+        grid-area: 1 / 1 / 3 / 2;
+        justify-self: stretch;
+        margin: -3rem -11% 0;
+        background-position: 78% bottom;
+    }
+
+    .guess-pedal-track::after {
+        right: 16%;
+    }
+
+    .guess-pedal-card::before {
+        background: linear-gradient(#65251de8, transparent 35%);
+    }
 }
 
 .tech-tag {
