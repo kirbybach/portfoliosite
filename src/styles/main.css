@@ -985,41 +985,134 @@ button {
 
 /* The panorama, racer and wordmark all use the same fixed integer zoom. */
 .guess-pedal-track {
+    --scene-width: calc(704 * var(--art-pixel));
+    --scene-anchor: .75;
+    --scene-y: bottom;
+    --surge: 108px;
+    --surge-steps: 36;
     z-index: -2;
-    background: linear-gradient(175deg, #f45b31dc 6%, #fd903bda 43%, #df492bd6 80%, #a93324de),
-        #cf4b28 url('/images/guess-pedal/garage-sunset.webp') 75% bottom /
-        calc(704 * var(--art-pixel)) calc(189 * var(--art-pixel)) no-repeat;
-    background-position: center, round(down, 75%, var(--art-pixel)) bottom;
-    background-blend-mode: hard-light;
+    overflow: hidden;
     image-rendering: pixelated;
 }
 
 .guess-pedal-track::before {
     content: '';
     position: absolute;
-    inset: auto 0 0;
+    inset: 0 calc(-1 * var(--scene-width)) 0 0;
+    background: linear-gradient(#f45b31dc 6%, #fd903bda 43%, #df492bd6 80%, #a93324de),
+        #cf4b28 url('/images/guess-pedal/garage-sunset.webp') left bottom /
+        var(--scene-width) calc(189 * var(--art-pixel)) repeat-x;
+    background-position: center, round(down, calc((100% - var(--scene-width)) * var(--scene-anchor)), var(--art-pixel)) var(--scene-y);
+    background-blend-mode: hard-light;
+}
+
+.guess-pedal-track::after {
+    content: '';
+    position: absolute;
+    inset: auto -75px 0 0;
     height: 56px;
     height: round(down, 17%, var(--art-pixel));
     border-top: var(--art-pixel) solid #f19b5f;
     background: repeating-linear-gradient(90deg, #ed9463 0 24px, transparent 24px 75px) 0 15px / 100% var(--art-pixel) no-repeat, #77392b;
 }
 
-.guess-pedal-track::after {
-    content: '';
+.guess-pedal-racer {
     position: absolute;
+    z-index: 1;
+    overflow: hidden;
     right: 23%;
     bottom: 44px;
-    right: round(down, 23%, var(--art-pixel));
+    right: round(down, clamp(9%, calc(50% - 250px), 23%), var(--art-pixel));
     bottom: round(down, 13%, var(--art-pixel));
     width: calc(56 * var(--art-pixel));
     height: calc(36 * var(--art-pixel));
     background: url('/images/guess-pedal/v7-car-still.png') center / 100% 100% no-repeat;
 }
 
+.guess-pedal-motion {
+    display: none;
+    position: absolute;
+    right: 60px;
+    bottom: 39px;
+    place-items: center;
+    width: 33px;
+    height: 33px;
+    border: 3px solid #9f5740;
+    border-radius: 0;
+    background: #421d18;
+    color: #ffd39a;
+}
+
+.guess-pedal-motion::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    box-sizing: border-box;
+    border-inline: 3px solid;
+}
+
+.guess-pedal-motion[data-paused="true"]::before {
+    border: 6px solid transparent;
+    border-right: 0;
+    border-left: 9px solid currentColor;
+    width: 9px;
+}
+
+.guess-pedal-motion:focus-visible { outline: 3px solid #fff6dc; }
+
+@keyframes guess-desert-pass {
+    to { transform: translateX(calc(-1 * var(--scene-width))); }
+}
+
+@keyframes guess-lane-pass {
+    to { transform: translateX(-75px); }
+}
+
+@keyframes guess-car-surge {
+    from { transform: translateX(calc(-1 * var(--surge))); }
+    to { transform: translateX(0); }
+}
+
+@keyframes guess-car-frames {
+    to { transform: translateX(-100%); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .guess-pedal-card[data-driving="true"] { --drive-state: running; }
+    .guess-pedal-motion { display: grid; }
+
+    .guess-pedal-track::before {
+        animation: guess-desert-pass 24s steps(704) infinite;
+    }
+
+    .guess-pedal-track::after {
+        animation: guess-lane-pass .36s steps(25) infinite;
+    }
+
+    .guess-pedal-racer {
+        background: none;
+        animation: guess-car-surge 4.2s steps(var(--surge-steps)) infinite alternate;
+    }
+
+    .guess-pedal-racer::before {
+        content: '';
+        display: block;
+        width: 800%;
+        height: 100%;
+        background: url('/images/guess-pedal/racer-frames.webp') left / 100% 100% no-repeat;
+        animation: guess-car-frames .68s steps(8) infinite;
+    }
+
+    .guess-pedal-track::before, .guess-pedal-track::after,
+    .guess-pedal-racer, .guess-pedal-racer::before {
+        animation-play-state: var(--drive-state, paused);
+    }
+}
+
 .guess-pedal-card::before {
     content: '';
     z-index: -1;
-    background: linear-gradient(95deg, #481611 4%, #571a14f5 26%, #652119eb 36%, #792a1b63 53%, transparent 68%);
+    background: linear-gradient(95deg, #481611 4%, #571a14f5 26%, #652119eb max(36%, 22rem), #792a1b63 max(53%, 25rem), transparent max(68%, 30rem));
 }
 
 .guess-pedal-card::after {
@@ -1098,17 +1191,27 @@ button {
     .guess-pedal-play { grid-area: 4 / 2; align-self: start; }
 
     .guess-pedal-track {
+        --scene-anchor: .78;
+        --scene-y: round(down, 52%, var(--art-pixel));
+        --surge: 45px;
+        --surge-steps: 15;
         position: relative;
         grid-area: 1 / 1 / 3 / -1;
         justify-self: stretch;
         margin-top: -3.5rem;
-        background-position: center, 78% 52%;
-        background-position: center, round(down, 78%, var(--art-pixel)) round(down, 52%, var(--art-pixel));
     }
 
-    .guess-pedal-track::after {
+    .guess-pedal-racer {
         right: 16%;
         right: round(down, 16%, var(--art-pixel));
+    }
+
+    .guess-pedal-motion {
+        grid-area: 2 / 1 / 3 / -1;
+        position: relative;
+        inset: auto;
+        place-self: end;
+        margin-right: 24px;
     }
 
     .guess-pedal-card::before {

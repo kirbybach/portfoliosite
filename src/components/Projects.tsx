@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { TerminalIcon, BoxIcon, ChromeIcon, GithubIcon, MessageCircleIcon, BirdIcon } from './Icons'
 import ProjectModal from './ProjectModal'
 
@@ -91,6 +91,51 @@ const projects: (Project | GuessPedalProject)[] = [
     }
 ]
 
+function GuessPedalCard({ project }: { project: GuessPedalProject }) {
+    const cardRef = useRef<HTMLElement>(null)
+    const [visible, setVisible] = useState(false)
+    const [paused, setPaused] = useState(false)
+    const motionLabel = paused ? 'Resume driving animation' : 'Pause driving animation'
+
+    useEffect(() => {
+        const card = cardRef.current
+        if (!card) return
+        let inView = false
+        const update = () => setVisible(inView && !document.hidden)
+        const observer = new IntersectionObserver(([entry]) => {
+            inView = entry.isIntersecting
+            update()
+        })
+        observer.observe(card)
+        document.addEventListener('visibilitychange', update)
+        return () => {
+            observer.disconnect()
+            document.removeEventListener('visibilitychange', update)
+        }
+    }, [])
+
+    return (
+        <article ref={cardRef} className="guess-pedal-card" data-driving={visible && !paused}>
+            <div className="guess-pedal-track" aria-hidden="true">
+                <span className="guess-pedal-racer" />
+            </div>
+            <h3 className="guess-pedal-title">
+                <img src="/images/guess-pedal/sunset-logo.svg" alt={project.title} width="77" height="14" />
+            </h3>
+            <p className="project-description">{project.description}</p>
+            <a className="guess-pedal-play" href={project.playUrl}>Play Guess Pedal</a>
+            <button
+                type="button"
+                className="guess-pedal-motion"
+                aria-label={motionLabel}
+                title={motionLabel}
+                data-paused={paused}
+                onClick={() => setPaused(current => !current)}
+            />
+        </article>
+    )
+}
+
 export default function Projects() {
     const [selectedProject, setSelectedProject] = useState<Project | null>(null)
     const [showAllProjects, setShowAllProjects] = useState(false)
@@ -111,14 +156,7 @@ export default function Projects() {
                 <h2 className="section-title"><span className="gradient-text">Featured Projects</span></h2>
                 <div className="projects-grid" id="projects-grid">
                     {visibleProjects.map((project) => 'playUrl' in project ? (
-                        <article key={project.title} className="guess-pedal-card">
-                            <div className="guess-pedal-track" aria-hidden="true" />
-                            <h3 className="guess-pedal-title">
-                                <img src="/images/guess-pedal/sunset-logo.svg" alt={project.title} width="77" height="14" />
-                            </h3>
-                            <p className="project-description">{project.description}</p>
-                            <a className="guess-pedal-play" href={project.playUrl}>Play Guess Pedal</a>
-                        </article>
+                        <GuessPedalCard key={project.title} project={project} />
                     ) : (
                         <article
                             key={project.title}
