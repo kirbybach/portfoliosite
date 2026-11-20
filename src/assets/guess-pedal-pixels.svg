@@ -22,14 +22,25 @@
       <svg y="100%" overflow="visible"><use href="#notch" transform="scale(1 -1)"/></svg>
     </mask>
     <filter id="depth" filterUnits="userSpaceOnUse" x="0" y="0" width="100%" height="100%">
+      <feOffset in="SourceAlpha" dx="4" dy="10" result="far"/>
+      <feFlood flood-color="#381725" flood-opacity=".26"/>
+      <feComposite in2="far" operator="in" result="farShadow"/>
+      <feOffset in="SourceAlpha" dx="2" dy="6" result="near"/>
+      <feFlood flood-color="#411a21" flood-opacity=".46"/>
+      <feComposite in2="near" operator="in" result="nearShadow"/>
       <feOffset in="SourceAlpha" dy="2" result="lip"/>
       <feFlood flood-color="#bd8b60"/>
-      <feComposite in2="lip" operator="in"/>
-      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+      <feComposite in2="lip" operator="in" result="lipColor"/>
+      <feMerge>
+        <feMergeNode in="farShadow"/>
+        <feMergeNode in="nearShadow"/>
+        <feMergeNode in="lipColor"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
     </filter>
   </defs>
-  <g mask="url(#cracks)">
-    <g filter="url(#depth)">
+  <g filter="url(#depth)">
+    <g mask="url(#cracks)">
       <rect width="100%" height="28" fill="url(#ledge)"/>
       <rect width="20" height="100%" fill="url(#side)"/>
       <svg x="100%" y="100%" overflow="visible">
